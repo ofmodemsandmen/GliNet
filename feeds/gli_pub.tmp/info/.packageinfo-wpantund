@@ -1,0 +1,21 @@
+Source-Makefile: feeds/gli_pub/wpantund/Makefile
+Build-Types: host
+
+Package: wpantund
+Version: 2019-11-13-9e1c0daf7d139ef2668ca28faff8789d2e68364d
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libreadline +dbus +libstdcpp +libncurses +boost-system +kmod-tun
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: wpantund
+Maintainer: 
+Source: wpantund-2019-11-13.tar.bz2
+Type: ipkg
+Description: 	wpantund on openwrt
+
+@@
+
+

@@ -1,0 +1,23 @@
+Source-Makefile: feeds/gli_pub/dns-forwarder/Makefile
+
+Package: dns-forwarder
+Version: 1.2.1-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread 
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Forwarding DNS queries on TCP transport
+Maintainer: Jian Chang <aa65535@live.com>
+Source: dns-forwarder-1.2.1-289e8c9c7167200668dff83b1e0cbce258665387.tar.gz
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: Forwarding DNS queries on TCP transport.
+https://github.com/aa65535/hev-dns-forwarder
+Jian Chang <aa65535@live.com>
+@@
+
+

@@ -1,0 +1,2659 @@
+Source-Makefile: feeds/gli_pub/bluez/Makefile
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+
+Package: bluez-examples
+Version: 5.47-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +python
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Repository: base
+Title: Bluetooth python example apps
+Maintainer: Nicolas Thill <nico@openwrt.org>
+Source: bluez-5.47.tar.xz
+License: GPL-2.0+
+LicenseFiles: COPYING
+Type: ipkg
+Description:   contains many examples apps for bluetooth, requiring python
+http://www.bluez.org/
+Nicolas Thill <nico@openwrt.org>
+@@
+
+Package: bluez-libs
+Version: 5.47-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libpthread +kmod-bluetooth
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: Bluetooth library
+Maintainer: Nicolas Thill <nico@openwrt.org>
+Source: bluez-5.47.tar.xz
+License: GPL-2.0+
+LicenseFiles: COPYING
+Type: ipkg
+Description: Bluetooth library
+http://www.bluez.org/
+Nicolas Thill <nico@openwrt.org>
+@@
+
+Package: bluez-utils
+Version: 5.47-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +bluez-libs +libpthread +librt +glib2 +libncurses +libreadline +BUILD_NLS:libintl-full +BUILD_NLS:libiconv-full
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Repository: base
+Title: Bluetooth utilities
+Maintainer: Nicolas Thill <nico@openwrt.org>
+Source: bluez-5.47.tar.xz
+License: GPL-2.0+
+LicenseFiles: COPYING
+Type: ipkg
+Description: Bluetooth utilities
+http://www.bluez.org/
+Nicolas Thill <nico@openwrt.org>
+@@
+
+Package: bluez-daemon
+Version: 5.47-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +bluez-libs +bluez-utils +dbus +libical +BUILD_NLS:libintl-full +BUILD_NLS:libiconv-full
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Repository: base
+Title: Bluetooth daemon
+Maintainer: Nicolas Thill <nico@openwrt.org>
+Source: bluez-5.47.tar.xz
+License: GPL-2.0+
+LicenseFiles: COPYING
+Type: ipkg
+Description: Bluetooth daemon
+http://www.bluez.org/
+Nicolas Thill <nico@openwrt.org>
+@@
+
+
+Source-Makefile: feeds/gli_pub/c-ares/Makefile
+
+Package: libcares
+Version: 1.13.0-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread 
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: Library for asyncronous DNS Requests (including name resolves)
+Maintainer: Karl Palsson <karlp@etactica.com>
+Source: c-ares-1.13.0.tar.gz
+License: MIT
+Type: ipkg
+Description:   c-ares is a C library for asynchronous DNS requests (including name resolves)
+
+C89 compatibility, MIT licensed, builds for and runs on POSIX, Windows,
+Netware, Android and many more operating systems.
+
+http://c-ares.haxx.se/
+Karl Palsson <karlp@etactica.com>
+@@
+
+
+Source-Makefile: feeds/gli_pub/chinadns/Makefile
+
+Package: ChinaDNS
+Version: 1.3.2-8
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread 
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Protect yourself against DNS poisoning in China.
+Maintainer: Jian Chang <aa65535@live.com>
+Source: ChinaDNS-1.3.2-5ed537bd24b7fd53540799f9ab4cf56f749c3245.tar.xz
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: Protect yourself against DNS poisoning in China.
+https://github.com/shadowsocks/ChinaDNS
+Jian Chang <aa65535@live.com>
+@@
+
+
+Source-Makefile: feeds/gli_pub/cups/cups/Makefile
+
+Package: cups
+Submenu: Printing
+Version: 2.1.4-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libcups +libcupsmime +libcupscgi +libcupsppdc +libusb-1.0
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Common UNIX Printing System (daemon)
+Maintainer: 
+Source: cups-2.1.4-source.tar.gz
+Type: ipkg
+Description: 	Common UNIX Printing System (daemon)
+http://www.cups.org/
+
+@@
+
+Package: libcups
+Submenu: Printing
+Version: 2.1.4-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +zlib +libpthread +libpng +libjpeg
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: Common UNIX Printing System - Core library
+Maintainer: 
+Source: cups-2.1.4-source.tar.gz
+Type: ipkg
+Description: 	Common UNIX Printing System - Core library
+http://www.cups.org/
+
+@@
+
+Package: libcupscgi
+Submenu: Printing
+Version: 2.1.4-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libcups
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: Common UNIX Printing System - CGI library
+Maintainer: 
+Source: cups-2.1.4-source.tar.gz
+Type: ipkg
+Description: 	Common UNIX Printing System - CGI library
+http://www.cups.org/
+
+@@
+
+Package: libcupsimage
+Submenu: Printing
+Version: 2.1.4-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libcups
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: Common UNIX Printing System - Image library
+Maintainer: 
+Source: cups-2.1.4-source.tar.gz
+Type: ipkg
+Description: 	Common UNIX Printing System - Image library
+http://www.cups.org/
+
+@@
+
+Package: libcupsmime
+Submenu: Printing
+Version: 2.1.4-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libcups
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: Common UNIX Printing System - MIME library
+Maintainer: 
+Source: cups-2.1.4-source.tar.gz
+Type: ipkg
+Description: 	Common UNIX Printing System - MIME library
+http://www.cups.org/
+
+@@
+
+Package: libcupsppdc
+Submenu: Printing
+Version: 2.1.4-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libcups +libstdcpp
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: Common UNIX Printing System - PPDC library
+Maintainer: 
+Source: cups-2.1.4-source.tar.gz
+Type: ipkg
+Description: 	Common UNIX Printing System - PPDC library
+http://www.cups.org/
+
+@@
+
+Package: cups-bsd
+Submenu: Printing
+Version: 2.1.4-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libcups
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Common UNIX Printing System - BSD commands (old)
+Maintainer: 
+Source: cups-2.1.4-source.tar.gz
+Type: ipkg
+Description: 	Common UNIX Printing System - BSD commands (old)
+http://www.cups.org/
+
+@@
+
+Package: cups-client
+Submenu: Printing
+Version: 2.1.4-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libcups +libcupsimage +libcupsmime
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Common UNIX Printing System - Client commands
+Maintainer: 
+Source: cups-2.1.4-source.tar.gz
+Type: ipkg
+Description: 	Common UNIX Printing System - Client commands
+http://www.cups.org/
+
+@@
+
+Package: cups-filters
+Submenu: Printing
+Version: 2.1.4-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libcupsimage
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Common UNIX Printing System - Filter
+Maintainer: 
+Source: cups-2.1.4-source.tar.gz
+Type: ipkg
+Description: 	Common UNIX Printing System - Filter
+http://www.cups.org/
+
+@@
+
+Package: cups-ppdc
+Submenu: Printing
+Version: 2.1.4-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libcupsppdc
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Common UNIX Printing System - PPDC utils
+Maintainer: 
+Source: cups-2.1.4-source.tar.gz
+Type: ipkg
+Description: 	Common UNIX Printing System - PPDC utils
+http://www.cups.org/
+
+@@
+
+
+Source-Makefile: feeds/gli_pub/cups/cups-bjnp/Makefile
+Build-Depends: cups
+
+Package: cups-bjnp
+Submenu: Printing
+Version: 2.0-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread cups
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: BJNP protocol backend for CUPS
+Maintainer: 
+Source: cups-bjnp-2.0.tar.gz
+Type: ipkg
+Description: CUPS backend for the canon printers using the proprietary USB over
+IP BJNP protocol. This backend allows Cups to print over the network
+to a Canon printer. It currently supports Cups 1.2 and Cups 1.3 and
+is designed by reverse engineering.
+http://sourceforge.net/projects/cups-bjnp/
+
+@@
+
+
+Source-Makefile: feeds/gli_pub/dns-forwarder/Makefile
+
+Package: dns-forwarder
+Version: 1.2.1-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread 
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Forwarding DNS queries on TCP transport
+Maintainer: Jian Chang <aa65535@live.com>
+Source: dns-forwarder-1.2.1-289e8c9c7167200668dff83b1e0cbce258665387.tar.gz
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: Forwarding DNS queries on TCP transport.
+https://github.com/aa65535/hev-dns-forwarder
+Jian Chang <aa65535@live.com>
+@@
+
+
+Source-Makefile: feeds/gli_pub/getdns/Makefile
+
+Package: getdns
+Menu: 1
+Version: 1.4.2-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +TARGET_ipq806x:libpthread +libopenssl +!GETDNS_ENABLE_STUB_ONLY:libunbound +GETDNS_ENABLE_IDN_LIBIDN2:libidn2
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: getdns (library)
+Maintainer: David Mora <iamperson347+public@gmail.com>
+Source: getdns-1.4.2.tar.gz
+License: BSD-3-Clause
+LicenseFiles: LICENSE
+Type: ipkg
+Description: 	This package contains the getdns library (libgetdns). 
+	This package also contains the "getdns_query" command line wrapper for getdns exposing the features of this implementation (both in the official API and the additional API functions).
+https://getdnsapi.net/
+David Mora <iamperson347+public@gmail.com>
+@@
+Config:
+	source "feeds/gli_pub/getdns/Config.in"
+@@
+
+
+Source-Makefile: feeds/gli_pub/jsoncpp/Makefile
+
+Package: jsoncpp
+Version: 1.8.4-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libstdcpp
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: jsoncpp
+Maintainer: 
+Source: jsoncpp-1.8.4.tar.gz
+License: MIT
+LicenseFiles: LICENSE
+Type: ipkg
+Description:   JsonCpp is a C++ library that allows manipulating
+  JSON values, including serialization and
+  deserialization to and from strings. It can also
+  preserve existing comment in
+  unserialization/serialization steps, making it a
+  convenient format to store user input files.
+https://github.com/open-source-parsers/jsoncpp
+
+@@
+
+
+Source-Makefile: feeds/gli_pub/libuhttpd/Makefile
+
+Package: libuhttpd-openssl
+Submenu: Networking
+Version: 3.12.1-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libev +PACKAGE_libuhttpd-openssl:libopenssl
+Conflicts: 
+Menu-Depends: 
+Provides: libuhttpd
+Build-Variant: openssl
+Section: libs
+Category: Libraries
+Repository: base
+Title: A lightweight HTTP server library based on libev
+Maintainer: Jianhui Zhao <zhaojh329@gmail.com>
+Source: libuhttpd-3.12.1.tar.gz
+License: MIT
+LicenseFiles: LICENSE
+Type: ipkg
+Description: A lightweight HTTP server library based on libev
+https://github.com/zhaojh329/libuhttpd
+Jianhui Zhao <zhaojh329@gmail.com>
+@@
+
+Package: libuhttpd-mbedtls
+Submenu: Networking
+Version: 3.12.1-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libev +PACKAGE_libuhttpd-mbedtls:libmbedtls +PACKAGE_libuhttpd-mbedtls:zlib
+Conflicts: 
+Menu-Depends: 
+Provides: libuhttpd
+Build-Variant: mbedtls
+Section: libs
+Category: Libraries
+Repository: base
+Title: A lightweight HTTP server library based on libev
+Maintainer: Jianhui Zhao <zhaojh329@gmail.com>
+Source: libuhttpd-3.12.1.tar.gz
+License: MIT
+LicenseFiles: LICENSE
+Type: ipkg
+Description: A lightweight HTTP server library based on libev
+https://github.com/zhaojh329/libuhttpd
+Jianhui Zhao <zhaojh329@gmail.com>
+@@
+
+Package: libuhttpd-wolfssl
+Submenu: Networking
+Version: 3.12.1-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libev +PACKAGE_libuhttpd-wolfssl:libwolfssl
+Conflicts: 
+Menu-Depends: 
+Provides: libuhttpd
+Build-Variant: wolfssl
+Section: libs
+Category: Libraries
+Repository: base
+Title: A lightweight HTTP server library based on libev
+Maintainer: Jianhui Zhao <zhaojh329@gmail.com>
+Source: libuhttpd-3.12.1.tar.gz
+License: MIT
+LicenseFiles: LICENSE
+Type: ipkg
+Description: A lightweight HTTP server library based on libev
+https://github.com/zhaojh329/libuhttpd
+Jianhui Zhao <zhaojh329@gmail.com>
+@@
+
+Package: libuhttpd-nossl
+Submenu: Networking
+Version: 3.12.1-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libev
+Conflicts: 
+Menu-Depends: 
+Provides: libuhttpd
+Build-Variant: nossl
+Section: libs
+Category: Libraries
+Repository: base
+Title: A lightweight HTTP server library based on libev
+Maintainer: Jianhui Zhao <zhaojh329@gmail.com>
+Source: libuhttpd-3.12.1.tar.gz
+License: MIT
+LicenseFiles: LICENSE
+Type: ipkg
+Description: A lightweight HTTP server library based on libev
+https://github.com/zhaojh329/libuhttpd
+Jianhui Zhao <zhaojh329@gmail.com>
+@@
+
+
+Source-Makefile: feeds/gli_pub/lighttpd/Makefile
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:gettext
+
+Package: lighttpd
+Menu: 1
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +LIGHTTPD_SSL:libopenssl +libpcre +libpthread
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: A flexible and lightweight web server
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: A flexible and lightweight web server
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+Config:
+config LIGHTTPD_SSL
+	bool "SSL support"
+	depends on PACKAGE_lighttpd
+	default y
+	help
+	  Implements SSL support in lighttpd (using libopenssl). This
+	  option is required if you enable the SSL engine in your
+	  lighttpd confguration file.
+@@
+
+Package: lighttpd-mod-redirect
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd +PACKAGE_lighttpd-mod-redirect:libpcre
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: URL redirection module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: URL redirection module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-auth
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Authentication module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Authentication module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-authn_file
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: File-based authentication module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: File-based authentication module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-authn_gssapi
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd +PACKAGE_lighttpd-mod-authn_gssapi:krb5-libs
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Kerberos-based authentication module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Kerberos-based authentication module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-authn_ldap
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd +PACKAGE_lighttpd-mod-authn_ldap:libopenldap
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: LDAP-based authentication module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: LDAP-based authentication module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-authn_mysql
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd +PACKAGE_lighttpd-mod-authn_mysql:libmysqlclient
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Mysql-based authentication module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Mysql-based authentication module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-access
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Access restrictions module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Access restrictions module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-accesslog
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Access logging module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Access logging module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-alias
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Directory alias module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Directory alias module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-cgi
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: CGI module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: CGI module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-cml
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd +PACKAGE_lighttpd-mod-cml:liblua
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Cache Meta Language module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Cache Meta Language module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-compress
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd +PACKAGE_lighttpd-mod-compress:zlib
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Compress output module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Compress output module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-deflate
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd +PACKAGE_lighttpd-mod-deflate:zlib
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Compress dynamic output module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Compress dynamic output module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-evasive
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Evasive module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Evasive module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-evhost
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Enhanced Virtual-Hosting module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Enhanced Virtual-Hosting module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-expire
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Expire module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Expire module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-extforward
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Extract client module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Extract client module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-fastcgi
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: FastCGI module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: FastCGI module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-flv_streaming
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: FLV streaming module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: FLV streaming module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-magnet
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd +PACKAGE_lighttpd-mod-magnet:liblua
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Magnet module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Magnet module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-mysql_vhost
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd +PACKAGE_lighttpd-mod-mysql_vhost:libmysqlclient
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Mysql virtual hosting module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Mysql virtual hosting module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-proxy
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Proxy module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Proxy module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-rewrite
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd +PACKAGE_lighttpd-mod-rewrite:libpcre
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: URL rewriting module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: URL rewriting module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-rrdtool
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: RRDtool module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: RRDtool module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-scgi
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: SCGI module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: SCGI module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-secdownload
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Secure and fast download module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Secure and fast download module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-setenv
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Environment variable setting module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Environment variable setting module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-simple_vhost
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Simple virtual hosting module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Simple virtual hosting module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-ssi
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd +PACKAGE_lighttpd-mod-ssi:libpcre
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: SSI module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: SSI module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-status
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Server status display module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Server status display module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-trigger_b4_dl
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd +PACKAGE_lighttpd-mod-trigger_b4_dl:libpcre +PACKAGE_lighttpd-mod-trigger_b4_dl:libgdbm
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Trigger before download module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Trigger before download module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-userdir
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: User directory module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: User directory module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-usertrack
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: User tracking module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: User tracking module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-webdav
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd +PACKAGE_lighttpd-mod-webdav:libsqlite3 +PACKAGE_lighttpd-mod-webdav:libuuid +PACKAGE_lighttpd-mod-webdav:libxml2
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: WebDAV module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: WebDAV module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: lighttpd-mod-wstunnel
+Submenu: Web Servers/Proxies
+Version: 1.4.48-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread lighttpd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Websocket tunneling module
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: lighttpd-1.4.48.tar.xz
+License: BSD-3c
+LicenseFiles: COPYING
+Type: ipkg
+Description: Websocket tunneling module
+http://www.lighttpd.net/
+W. Michael Petullo <mike@flyn.org>
+@@
+
+
+Source-Makefile: feeds/gli_pub/lua-lsqlite3/Makefile
+
+Package: lsqlite3
+Submenu: Lua
+Version: 0.9.5-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +lua +libsqlite3
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: lang
+Category: Languages
+Repository: base
+Title: Lua wrapper for the SQLite3 library
+Maintainer: Oskari Rauta <oskari.rauta@gmail.com>
+Source: lsqlite3_fsl09y.zip
+License: MIT
+Type: ipkg
+Description:  LuaSQLite3 is a thin wrapper around the public domain SQLite3 database engine.
+http://lua.sqlite.org
+Oskari Rauta <oskari.rauta@gmail.com>
+@@
+
+
+Source-Makefile: feeds/gli_pub/luci-app-chinadns/Makefile
+
+Package: luci-app-chinadns
+Submenu: 3. Applications
+Version: 1.6.2-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +ChinaDNS
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: luci
+Category: LuCI
+Repository: base
+Title: ChinaDNS LuCI interface
+Maintainer: Jian Chang <aa65535@live.com>
+Source: 
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: 	LuCI Support for ChinaDNS.
+Jian Chang <aa65535@live.com>
+@@
+
+Package: luci-app-dns-forwarder
+Submenu: 3. Applications
+Version: 1.6.2-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +dns-forwarder
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: luci
+Category: LuCI
+Repository: base
+Title: Dns-Forwarder LuCI interface
+Maintainer: Jian Chang <aa65535@live.com>
+Source: 
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: 	LuCI Support for Dns-Forwarder.
+Jian Chang <aa65535@live.com>
+@@
+
+Package: luci-app-redsocks2
+Submenu: 3. Applications
+Version: 1.6.2-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +redsocks2
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: luci
+Category: LuCI
+Repository: base
+Title: RedSocks2 LuCI interface
+Maintainer: Jian Chang <aa65535@live.com>
+Source: 
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: 	LuCI Support for RedSocks2.
+Jian Chang <aa65535@live.com>
+@@
+
+Package: luci-app-shadowvpn
+Submenu: 3. Applications
+Version: 1.6.2-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +ShadowVPN
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: luci
+Category: LuCI
+Repository: base
+Title: ShadowVPN LuCI interface
+Maintainer: Jian Chang <aa65535@live.com>
+Source: 
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: 	LuCI Support for ShadowVPN.
+Jian Chang <aa65535@live.com>
+@@
+
+
+Source-Makefile: feeds/gli_pub/luci-app-shadowsocks/Makefile
+
+Package: luci-app-shadowsocks
+Submenu: 3. Applications
+Version: 1.8.2-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +iptables +ipset
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: luci
+Category: LuCI
+Repository: base
+Title: LuCI Support for shadowsocks-libev
+Maintainer: Jian Chang <aa65535@live.com>
+Source: 
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: 	LuCI Support for shadowsocks-libev.
+Jian Chang <aa65535@live.com>
+@@
+
+Package: luci-app-shadowsocks-without-ipset
+Submenu: 3. Applications
+Version: 1.8.2-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +iptables
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: luci
+Category: LuCI
+Repository: base
+Title: LuCI Support for shadowsocks-libev
+Maintainer: Jian Chang <aa65535@live.com>
+Source: 
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: 	LuCI Support for shadowsocks-libev.
+Jian Chang <aa65535@live.com>
+@@
+
+
+Source-Makefile: feeds/gli_pub/mbusd/Makefile
+
+Package: mbusd
+Version: 0.3.0-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread 
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Repository: base
+Title: mbusd modbus gateway
+Maintainer: 
+Source: mbusd-0.3.0.tar.xz
+Type: ipkg
+Description:  mbusd modbus gateway.
+
+@@
+
+
+Source-Makefile: feeds/gli_pub/miniupnpc/Makefile
+
+Package: miniupnpc
+Submenu: Firewall
+Version: 1.9-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libminiupnpc
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Lightweight UPnP client
+Maintainer: Steven Barth <cyrus@openwrt.org>
+Source: miniupnpc-1.9.tar.gz
+Type: ipkg
+Description: Lightweight UPnP client
+http://miniupnp.tuxfamily.org/
+Steven Barth <cyrus@openwrt.org>
+@@
+
+Package: libminiupnpc
+Version: 1.9-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread 
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: Lightweight UPnP library
+Maintainer: Steven Barth <cyrus@openwrt.org>
+Source: miniupnpc-1.9.tar.gz
+Type: ipkg
+Description: Lightweight UPnP library
+http://miniupnp.tuxfamily.org/
+Steven Barth <cyrus@openwrt.org>
+@@
+
+
+Source-Makefile: feeds/gli_pub/mjpg-streamer/Makefile
+Build-Depends: MJPG_STREAMER_V4L2:libv4l
+
+Package: mjpg-streamer
+Menu: 1
+Version: 2018-04-14-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libpthread +libjpeg +MJPG_STREAMER_V4L2:libv4l
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: multimedia
+Category: Multimedia
+Repository: base
+Title: MJPG-streamer
+Maintainer: Roger D <rogerdammit@gmail.com>, Ted Hess <thess@kitschensync.net>
+Source: mjpg-streamer-2018-04-14.tar.xz
+License: GPL-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Description:  Streaming application for Linux-UVC compatible webcams
+https://github.com/jacksonliam/mjpg-streamer
+Roger D <rogerdammit@gmail.com>, Ted Hess <thess@kitschensync.net>
+@@
+Config:
+  source "feeds/gli_pub/mjpg-streamer/Config.in"
+@@
+
+
+Source-Makefile: feeds/gli_pub/mqtt/Makefile
+
+Package: mqtt
+Version: 1.3.1-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libpthread +libopenssl
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Repository: base
+Title: MQTT common libary
+Maintainer: 
+Source: 
+Type: ipkg
+Description: MQTT common libary
+
+@@
+
+
+Source-Makefile: feeds/gli_pub/mwan3/Makefile
+
+Package: mwan3
+Submenu: Routing and Redirection
+Version: 2.8.4-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +ip +ipset +iptables +iptables-mod-conntrack-extra +iptables-mod-ipopt +jshn
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Multiwan hotplug script with connection tracking support
+Maintainer: Florian Eckert <fe@dev.tdt.de>
+Source: 
+License: GPL-2.0
+Type: ipkg
+Description: Hotplug script which makes configuration of multiple WAN interfaces simple
+and manageable. With loadbalancing/failover support for up to 250 wan
+interfaces, connection tracking and an easy to manage traffic ruleset.
+Florian Eckert <fe@dev.tdt.de>
+@@
+
+
+Source-Makefile: feeds/gli_pub/nodogsplash/Makefile
+
+Package: nodogsplash
+Submenu: Captive Portals
+Version: 1.0.2-3
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libpthread +iptables-mod-ipopt
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Open public network gateway daemon
+Maintainer: 
+Source: nodogsplash-1.0.2.tar.gz
+License: GPL-2.0+
+Type: ipkg
+Description: 	Nodogsplash offers a simple way to open a free hotspot providing
+	restricted access to an internet connection.
+https://github.com/nodogsplash/nodogsplash
+
+@@
+
+
+Source-Makefile: feeds/gli_pub/openssl/Makefile
+
+Package: libopenssl
+Menu: 1
+Submenu: SSL
+Version: 1.1.1d-2
+ABIVersion: 1.1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +OPENSSL_WITH_COMPRESSION:zlib +OPENSSL_ENGINE_BUILTIN_AFALG:kmod-crypto-user +OPENSSL_ENGINE_BUILTIN_DEVCRYPTO:kmod-cryptodev +OPENSSL_ENGINE_BUILTIN_PADLOCK:kmod-crypto-hw-padlock
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: Open source SSL toolkit (libraries)
+Maintainer: Eneas U de Queiroz <cotequeiroz@gmail.com>
+Source: openssl-1.1.1d.tar.gz
+License: OpenSSL
+LicenseFiles: LICENSE
+Type: ipkg
+Description: The OpenSSL Project is a collaborative effort to develop a robust,
+commercial-grade, full-featured, and Open Source toolkit implementing the
+Transport Layer Security (TLS) protocol as well as a full-strength
+general-purpose cryptography library.
+This package contains the OpenSSL shared libraries, needed by other programs.
+http://www.openssl.org/
+Eneas U de Queiroz <cotequeiroz@gmail.com>
+@@
+Config:
+source "feeds/gli_pub/openssl/Config.in"
+@@
+
+Package: libopenssl-conf
+Submenu: SSL
+Version: 1.1.1d-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread libopenssl
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: /etc/ssl/openssl.cnf config file
+Maintainer: Eneas U de Queiroz <cotequeiroz@gmail.com>
+Source: openssl-1.1.1d.tar.gz
+License: OpenSSL
+LicenseFiles: LICENSE
+Type: ipkg
+Description: The OpenSSL Project is a collaborative effort to develop a robust,
+commercial-grade, full-featured, and Open Source toolkit implementing the
+Transport Layer Security (TLS) protocol as well as a full-strength
+general-purpose cryptography library.
+This package installs the OpenSSL configuration file /etc/ssl/openssl.cnf.
+http://www.openssl.org/
+Eneas U de Queiroz <cotequeiroz@gmail.com>
+@@
+
+Package: libopenssl-afalg
+Submenu: SSL
+Version: 1.1.1d-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread libopenssl @OPENSSL_ENGINE @KERNEL_AIO +PACKAGE_libopenssl-afalg:kmod-crypto-user +libopenssl-conf @!OPENSSL_ENGINE_BUILTIN
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: AFALG hardware acceleration engine
+Maintainer: Eneas U de Queiroz <cotequeiroz@gmail.com>
+Source: openssl-1.1.1d.tar.gz
+License: OpenSSL
+LicenseFiles: LICENSE
+Type: ipkg
+Description: This package adds an engine that enables hardware acceleration
+through the AF_ALG kernel interface.
+To use it, you need to configure the engine in /etc/ssl/openssl.cnf
+See https://www.openssl.org/docs/man1.1.1/man5/config.html#Engine-Configuration-Module
+and https://openwrt.org/docs/techref/hardware/cryptographic.hardware.accelerators
+The engine_id is "afalg"
+http://www.openssl.org/
+Eneas U de Queiroz <cotequeiroz@gmail.com>
+@@
+
+Package: libopenssl-devcrypto
+Submenu: SSL
+Version: 1.1.1d-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread libopenssl @OPENSSL_ENGINE +PACKAGE_libopenssl-devcrypto:kmod-cryptodev +libopenssl-conf @!OPENSSL_ENGINE_BUILTIN
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: /dev/crypto hardware acceleration engine
+Maintainer: Eneas U de Queiroz <cotequeiroz@gmail.com>
+Source: openssl-1.1.1d.tar.gz
+License: OpenSSL
+LicenseFiles: LICENSE
+Type: ipkg
+Description: This package adds an engine that enables hardware acceleration
+through the /dev/crypto kernel interface.
+To use it, you need to configure the engine in /etc/ssl/openssl.cnf
+See https://www.openssl.org/docs/man1.1.1/man5/config.html#Engine-Configuration-Module
+and https://openwrt.org/docs/techref/hardware/cryptographic.hardware.accelerators
+The engine_id is "devcrypto"
+http://www.openssl.org/
+Eneas U de Queiroz <cotequeiroz@gmail.com>
+@@
+
+Package: libopenssl-padlock
+Submenu: SSL
+Version: 1.1.1d-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread libopenssl @OPENSSL_ENGINE @TARGET_x86 +PACKAGE_libopenssl-padlock:kmod-crypto-hw-padlock +libopenssl-conf @!OPENSSL_ENGINE_BUILTIN
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: VIA Padlock hardware acceleration engine
+Maintainer: Eneas U de Queiroz <cotequeiroz@gmail.com>
+Source: openssl-1.1.1d.tar.gz
+License: OpenSSL
+LicenseFiles: LICENSE
+Type: ipkg
+Description: This package adds an engine that enables VIA Padlock hardware acceleration.
+To use it, you need to configure it in /etc/ssl/openssl.cnf.
+See https://www.openssl.org/docs/man1.1.1/man5/config.html#Engine-Configuration-Module
+and https://openwrt.org/docs/techref/hardware/cryptographic.hardware.accelerators
+The engine_id is "padlock"
+http://www.openssl.org/
+Eneas U de Queiroz <cotequeiroz@gmail.com>
+@@
+
+Package: openssl-util
+Version: 1.1.1d-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libopenssl +libopenssl-conf
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Repository: base
+Title: Open source SSL toolkit (utility)
+Maintainer: Eneas U de Queiroz <cotequeiroz@gmail.com>
+Source: openssl-1.1.1d.tar.gz
+License: OpenSSL
+LicenseFiles: LICENSE
+Type: ipkg
+Description: The OpenSSL Project is a collaborative effort to develop a robust,
+commercial-grade, full-featured, and Open Source toolkit implementing the
+Transport Layer Security (TLS) protocol as well as a full-strength
+general-purpose cryptography library.
+This package contains the OpenSSL command-line utility.
+http://www.openssl.org/
+Eneas U de Queiroz <cotequeiroz@gmail.com>
+@@
+
+
+Source-Makefile: feeds/gli_pub/openvswitch/Makefile
+
+Package: kmod-openvswitch
+Submenu: Network Support
+Version: <LINUX_VERSION>+2.14.0-2
+Depends: +kmod-lib-crc32c +kmod-nf-nat +IPV6:kmod-nf-nat6 +kmod-nf-conntrack +IPV6:kmod-nf-conntrack6 +(!LINUX_4_9&&!LINUX_4_4):kmod-nsh +(!LINUX_4_9&&!LINUX_4_4):kmod-ipt-conntrack-extra  
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: Open vSwitch kernel datapath (upstream)
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Kernel-Config: CONFIG_OPENVSWITCH
+Description: Open vSwitch kernel datapath (upstream)
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+Package: kmod-openvswitch-gre
+Submenu: Network Support
+Version: <LINUX_VERSION>+2.14.0-2
+Depends: +kmod-openvswitch +kmod-gre 
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: Open vSwitch GRE tunneling support (upstream)
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Kernel-Config: CONFIG_OPENVSWITCH_GRE
+Description: Open vSwitch GRE tunneling support (upstream)
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+Package: kmod-openvswitch-vxlan
+Submenu: Network Support
+Version: <LINUX_VERSION>+2.14.0-2
+Depends: +kmod-openvswitch +kmod-vxlan 
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: Open vSwitch VXLAN tunneling support (upstream)
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Kernel-Config: CONFIG_OPENVSWITCH_VXLAN
+Description: Open vSwitch VXLAN tunneling support (upstream)
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+Package: kmod-openvswitch-geneve
+Submenu: Network Support
+Version: <LINUX_VERSION>+2.14.0-2
+Depends: +kmod-openvswitch +kmod-geneve 
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: Open vSwitch Geneve tunneling support (upstream)
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Kernel-Config: CONFIG_OPENVSWITCH_GENEVE
+Description: Open vSwitch Geneve tunneling support (upstream)
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+Package: kmod-openvswitch-intree
+Submenu: Network Support
+Version: <LINUX_VERSION>+2.14.0-2
+Depends: +kmod-lib-crc32c +kmod-nf-nat +IPV6:kmod-nf-nat6 +IPV6:kmod-iptunnel6 +kmod-nf-conntrack +(IPV6&&(LINUX_4_9||LINUX_4_14)):kmod-nf-conntrack6 +(LINUX_4_9||LINUX_4_14):kmod-gre +(IPV6&&(LINUX_4_9||LINUX_4_14)):kmod-gre6 +(!LINUX_4_9):kmod-udptunnel4 +(!LINUX_4_9):kmod-ipt-conntrack-extra  @IPV6 @DEVEL
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: Open vSwitch kernel datapath (in tree)
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Description: Open vSwitch kernel datapath (in tree)
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+Package: kmod-openvswitch-gre-intree
+Submenu: Network Support
+Version: <LINUX_VERSION>+2.14.0-2
+Depends: +kmod-openvswitch-intree +kmod-gre @IPV6 @DEVEL
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: Open vSwitch GRE tunneling support (in tree)
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Description: Open vSwitch GRE tunneling support (in tree)
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+Package: kmod-openvswitch-vxlan-intree
+Submenu: Network Support
+Version: <LINUX_VERSION>+2.14.0-2
+Depends: +kmod-openvswitch-intree +kmod-vxlan @IPV6 @DEVEL
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: Open vSwitch VXLAN tunneling support (in tree)
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Description: Open vSwitch VXLAN tunneling support (in tree)
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+Package: kmod-openvswitch-geneve-intree
+Submenu: Network Support
+Version: <LINUX_VERSION>+2.14.0-2
+Depends: +kmod-openvswitch-intree +kmod-geneve @IPV6 @DEVEL
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: Open vSwitch Geneve tunneling support (in tree)
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Description: Open vSwitch Geneve tunneling support (in tree)
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+Package: kmod-openvswitch-stt-intree
+Submenu: Network Support
+Version: <LINUX_VERSION>+2.14.0-2
+Depends: +kmod-openvswitch-intree @IPV6 @DEVEL
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: Open vSwitch STT tunneling support (in tree)
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Description: Open vSwitch STT tunneling support (in tree)
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+Package: kmod-openvswitch-lisp-intree
+Submenu: Network Support
+Version: <LINUX_VERSION>+2.14.0-2
+Depends: +kmod-openvswitch-intree @IPV6 @DEVEL
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: kernel
+Category: Kernel modules
+Title: Open vSwitch LISP tunneling support (in tree)
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Description: Open vSwitch LISP tunneling support (in tree)
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+Package: openvswitch-libopenvswitch
+Submenu: Open vSwitch
+Version: 2.14.0-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libopenssl +libunbound +!(arm):libunwind +libatomic +librt
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Open vSwitch (libopenvswitch.so)
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Hidden: 1
+Description: Open vSwitch (libopenvswitch.so)
+https://www.openvswitch.org
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+Package: openvswitch-libofproto
+Submenu: Open vSwitch
+Version: 2.14.0-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libatomic +librt +libpthread
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Open vSwitch (libofproto.so libsflow.so)
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Hidden: 1
+Description: Open vSwitch (libofproto.so libsflow.so)
+https://www.openvswitch.org
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+Package: openvswitch-libovsdb
+Submenu: Open vSwitch
+Version: 2.14.0-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libatomic +librt +libpthread
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Open vSwitch (libovsdb.so)
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Hidden: 1
+Description: Open vSwitch (libovsdb.so)
+https://www.openvswitch.org
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+Package: openvswitch-vswitchd
+Submenu: Open vSwitch
+Version: 2.14.0-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +openvswitch-libopenvswitch +openvswitch-libofproto +libatomic
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Open vSwitch (ovs-vswitchd)
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Hidden: 1
+Description: Open vSwitch (ovs-vswitchd)
+https://www.openvswitch.org
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+Package: openvswitch-ovsdb
+Submenu: Open vSwitch
+Version: 2.14.0-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +openvswitch-libopenvswitch +openvswitch-libovsdb +libatomic
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Open vSwitch (ovsdb-server)
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Hidden: 1
+Description: Open vSwitch (ovsdb-server)
+https://www.openvswitch.org
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+Package: openvswitch-common
+Submenu: Open vSwitch
+Version: 2.14.0-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +openvswitch-libopenvswitch +openvswitch-libofproto +openvswitch-libovsdb +libatomic
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Open vSwitch (common files)
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Hidden: 1
+Description: Open vSwitch (common files)
+https://www.openvswitch.org
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+Package: openvswitch
+Submenu: Open vSwitch
+Version: 2.14.0-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +coreutils +coreutils-sleep +uuidgen +openvswitch-common +openvswitch-vswitchd +openvswitch-ovsdb +libatomic
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Open vSwitch
+Maintainer: Yousong Zhou <yszhou4tech@gmail.com>
+Source: openvswitch-2.14.0.tar.gz
+License: Apache-2.0
+LicenseFiles: LICENSE
+Type: ipkg
+Description: Open vSwitch
+https://www.openvswitch.org
+Yousong Zhou <yszhou4tech@gmail.com>
+@@
+
+
+Source-Makefile: feeds/gli_pub/samba36/Makefile
+
+Package: samba36-client
+Version: 3.6.25-15
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libreadline +libncurses
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Samba 3.6 SMB/CIFS client
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Source: samba-3.6.25.tar.gz
+License: GPL-3.0
+LicenseFiles: COPYING
+Type: ipkg
+Description: Samba 3.6 SMB/CIFS client
+https://www.samba.org/
+Felix Fietkau <nbd@nbd.name>
+@@
+
+Package: samba36-server
+Version: 3.6.25-15
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread 
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Samba 3.6 SMB/CIFS server
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Source: samba-3.6.25.tar.gz
+License: GPL-3.0
+LicenseFiles: COPYING
+Type: ipkg
+Description:  The Samba software suite is a collection of programs that implements the
+ SMB protocol for UNIX systems, allowing you to serve files and printers to
+ Windows, NT, OS/2 and DOS clients. This protocol is sometimes also referred
+ to as the LanManager or Netbios protocol.
+https://www.samba.org/
+Felix Fietkau <nbd@nbd.name>
+@@
+Config:
+	config PACKAGE_SAMBA_MAX_DEBUG_LEVEL
+		int "Maximum level of compiled-in debug messages"
+		depends on PACKAGE_samba36-server || PACKAGE_samba36-client
+		default -1
+@@
+
+Package: samba36-hotplug
+Version: 3.6.25-15
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +blockd
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Samba 3.6 SMB/CIFS hotplug script for auto sharing
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Source: samba-3.6.25.tar.gz
+License: GPL-3.0
+LicenseFiles: COPYING
+Type: ipkg
+Description: Samba 3.6 SMB/CIFS hotplug script for auto sharing
+https://www.samba.org/
+Felix Fietkau <nbd@nbd.name>
+@@
+
+Package: samba36-net
+Version: 3.6.25-15
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libreadline +libncurses
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Samba 3.6 SMB/CIFS net commands
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Source: samba-3.6.25.tar.gz
+License: GPL-3.0
+LicenseFiles: COPYING
+Type: ipkg
+Description: Samba 3.6 SMB/CIFS net commands
+https://www.samba.org/
+Felix Fietkau <nbd@nbd.name>
+@@
+
+
+Source-Makefile: feeds/gli_pub/shadowsocks-libev/Makefile
+Build-Depends: libev libpcre libcares libsodium libmbedtls
+
+Package: shadowsocks-libev
+Version: 3.2.0-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +zlib +libpthread +!SHADOWSOCKS_WITH_EV:libev +!SHADOWSOCKS_WITH_PCRE:libpcre +!SHADOWSOCKS_WITH_CARES:libcares +!SHADOWSOCKS_WITH_SODIUM:libsodium +!SHADOWSOCKS_WITH_MBEDTLS:libmbedtls
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Lightweight Secured Socks5 Proxy
+Maintainer: Jian Chang <aa65535@live.com>
+Source: shadowsocks-libev-3.2.0-8c98bdecac22b5de7637f82c5db458fd57798a68.tar.xz
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: Shadowsocks-libev is a lightweight secured socks5 proxy for embedded devices and low end boxes.
+https://github.com/shadowsocks/shadowsocks-libev
+Jian Chang <aa65535@live.com>
+@@
+
+Package: shadowsocks-libev-server
+Version: 3.2.0-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +zlib +libpthread +!SHADOWSOCKS_WITH_EV:libev +!SHADOWSOCKS_WITH_PCRE:libpcre +!SHADOWSOCKS_WITH_CARES:libcares +!SHADOWSOCKS_WITH_SODIUM:libsodium +!SHADOWSOCKS_WITH_MBEDTLS:libmbedtls
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Lightweight Secured Socks5 Proxy
+Maintainer: Jian Chang <aa65535@live.com>
+Source: shadowsocks-libev-3.2.0-8c98bdecac22b5de7637f82c5db458fd57798a68.tar.xz
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: Shadowsocks-libev is a lightweight secured socks5 proxy for embedded devices and low end boxes.
+https://github.com/shadowsocks/shadowsocks-libev
+Jian Chang <aa65535@live.com>
+@@
+Config:
+menu "Shadowsocks-libev Compile Configuration"
+	depends on PACKAGE_shadowsocks-libev || PACKAGE_shadowsocks-libev-server
+	config SHADOWSOCKS_STATIC_LINK
+		bool "enable static link libraries."
+		default n
+
+		menu "Select libraries"
+			depends on SHADOWSOCKS_STATIC_LINK
+			config SHADOWSOCKS_WITH_EV
+				bool "static link libev."
+				default y
+
+			config SHADOWSOCKS_WITH_PCRE
+				bool "static link libpcre."
+				default y
+
+			config SHADOWSOCKS_WITH_CARES
+				bool "static link libcares."
+				default y
+
+			config SHADOWSOCKS_WITH_SODIUM
+				bool "static link libsodium."
+				default y
+
+			config SHADOWSOCKS_WITH_MBEDTLS
+				bool "static link libmbedtls."
+				default y
+		endmenu
+endmenu
+@@
+
+
+Source-Makefile: feeds/gli_pub/stubby/Makefile
+
+Package: stubby
+Submenu: IP Addresses and Names
+Version: 0.2.3-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libyaml +getdns
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title:  - (daemon that uses getdns)
+Maintainer: David Mora <iamperson347+public@gmail.com>
+Require-User: stubby=410:stubby=410
+Source: stubby-0.2.3.tar.xz
+License: BSD-3-Clause
+LicenseFiles: COPYING
+Type: ipkg
+Description: 	This package contains the Stubby daemon (which utilizes the getdns library).
+
+	See https://github.com/openwrt/packages/blob/master/net/stubby/files/README.md for more details.
+David Mora <iamperson347+public@gmail.com>
+@@
+
+
+Source-Makefile: feeds/gli_pub/teensyloader/Makefile
+
+Package: teensyloader
+Version: 2.1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libusb-compat
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: base
+Category: Network
+Repository: base
+Title: teensyloader
+Maintainer: 
+Source: teensyloader-2.1.tar.gz
+Type: ipkg
+Description: 	teensloader
+
+@@
+
+
+Source-Makefile: feeds/gli_pub/tor/Makefile
+
+Package: tor
+Version: 0.4.2.7-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libevent2 +libopenssl +libpthread +librt +zlib +libcap
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: An anonymous Internet communication system
+Maintainer: Hauke Mehrtens <hauke@hauke-m.de> Peter Wagner <tripolar@gmx.at>
+Require-User: tor=52:tor=52
+Source: tor-0.4.2.7.tar.gz
+LicenseFiles: LICENSE
+Type: ipkg
+Description:  Tor is a toolset for a wide range of organizations and people that want to
+ improve their safety and security on the Internet. Using Tor can help you
+ anonymize web browsing and publishing, instant messaging, IRC, SSH, and
+ more. Tor also provides a platform on which software developers can build
+ new applications with built-in anonymity, safety, and privacy features.
+ This package contains the tor daemon.
+https://www.torproject.org/
+Hauke Mehrtens <hauke@hauke-m.de> Peter Wagner <tripolar@gmx.at>
+@@
+
+Package: tor-gencert
+Version: 0.4.2.7-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +tor
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Tor certificate generation
+Maintainer: Hauke Mehrtens <hauke@hauke-m.de> Peter Wagner <tripolar@gmx.at>
+Require-User: tor=52:tor=52
+Source: tor-0.4.2.7.tar.gz
+LicenseFiles: LICENSE
+Type: ipkg
+Description:  Tor is a toolset for a wide range of organizations and people that want to
+ improve their safety and security on the Internet. Using Tor can help you
+ anonymize web browsing and publishing, instant messaging, IRC, SSH, and
+ more. Tor also provides a platform on which software developers can build
+ new applications with built-in anonymity, safety, and privacy features.
+ Generate certs and keys for Tor directory authorities
+https://www.torproject.org/
+Hauke Mehrtens <hauke@hauke-m.de> Peter Wagner <tripolar@gmx.at>
+@@
+
+Package: tor-resolve
+Version: 0.4.2.7-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +tor
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: tor hostname resolve
+Maintainer: Hauke Mehrtens <hauke@hauke-m.de> Peter Wagner <tripolar@gmx.at>
+Require-User: tor=52:tor=52
+Source: tor-0.4.2.7.tar.gz
+LicenseFiles: LICENSE
+Type: ipkg
+Description:  Tor is a toolset for a wide range of organizations and people that want to
+ improve their safety and security on the Internet. Using Tor can help you
+ anonymize web browsing and publishing, instant messaging, IRC, SSH, and
+ more. Tor also provides a platform on which software developers can build
+ new applications with built-in anonymity, safety, and privacy features.
+ Resolve a hostname to an IP address via tor
+https://www.torproject.org/
+Hauke Mehrtens <hauke@hauke-m.de> Peter Wagner <tripolar@gmx.at>
+@@
+
+Package: tor-geoip
+Version: 0.4.2.7-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +tor
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: GeoIP db for tor
+Maintainer: Hauke Mehrtens <hauke@hauke-m.de> Peter Wagner <tripolar@gmx.at>
+Require-User: tor=52:tor=52
+Source: tor-0.4.2.7.tar.gz
+LicenseFiles: LICENSE
+Type: ipkg
+Description:  Tor is a toolset for a wide range of organizations and people that want to
+ improve their safety and security on the Internet. Using Tor can help you
+ anonymize web browsing and publishing, instant messaging, IRC, SSH, and
+ more. Tor also provides a platform on which software developers can build
+ new applications with built-in anonymity, safety, and privacy features.
+ This package contains a GeoIP database mapping IP addresses to countries.
+https://www.torproject.org/
+Hauke Mehrtens <hauke@hauke-m.de> Peter Wagner <tripolar@gmx.at>
+@@
+
+
+Source-Makefile: feeds/gli_pub/unbound/Makefile
+
+Package: unbound
+Submenu: IP Addresses and Names
+Version: 1.8.1-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libopenssl +libunbound
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Validating Recursive DNS Server (daemon)
+Maintainer: Eric Luehrsen <ericluehrsen@gmail.com>
+Require-User: unbound=553:unbound=553
+Source: unbound-1.8.1.tar.gz
+License: BSD-3-Clause
+LicenseFiles: LICENSE
+Type: ipkg
+Description:   This package contains the Unbound daemon.
+http://www.unbound.net/
+Eric Luehrsen <ericluehrsen@gmail.com>
+@@
+
+Package: unbound-anchor
+Submenu: IP Addresses and Names
+Version: 1.8.1-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libopenssl +unbound +libexpat
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Validating Recursive DNS Server (DSKEY utility)
+Maintainer: Eric Luehrsen <ericluehrsen@gmail.com>
+Source: unbound-1.8.1.tar.gz
+License: BSD-3-Clause
+LicenseFiles: LICENSE
+Type: ipkg
+Description:   This package contains the Unbound anchor utility.
+http://www.unbound.net/
+Eric Luehrsen <ericluehrsen@gmail.com>
+@@
+
+Package: unbound-control
+Submenu: IP Addresses and Names
+Version: 1.8.1-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libopenssl +unbound
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Validating Recursive DNS Server (control utility)
+Maintainer: Eric Luehrsen <ericluehrsen@gmail.com>
+Source: unbound-1.8.1.tar.gz
+License: BSD-3-Clause
+LicenseFiles: LICENSE
+Type: ipkg
+Description:   This package contains the Unbound control utility.
+http://www.unbound.net/
+Eric Luehrsen <ericluehrsen@gmail.com>
+@@
+
+Package: unbound-control-setup
+Submenu: IP Addresses and Names
+Version: 1.8.1-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libopenssl +unbound-control +openssl-util
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Validating Recursive DNS Server (control setup)
+Maintainer: Eric Luehrsen <ericluehrsen@gmail.com>
+Source: unbound-1.8.1.tar.gz
+License: BSD-3-Clause
+LicenseFiles: LICENSE
+Type: ipkg
+Description:   This package contains the Unbound control setup utility.
+http://www.unbound.net/
+Eric Luehrsen <ericluehrsen@gmail.com>
+@@
+
+Package: unbound-host
+Submenu: IP Addresses and Names
+Version: 1.8.1-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libopenssl +libunbound
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Validating Recursive DNS Server (lookup utility)
+Maintainer: Eric Luehrsen <ericluehrsen@gmail.com>
+Source: unbound-1.8.1.tar.gz
+License: BSD-3-Clause
+LicenseFiles: LICENSE
+Type: ipkg
+Description:   This package contains the Unbound DNS lookup utility.
+http://www.unbound.net/
+Eric Luehrsen <ericluehrsen@gmail.com>
+@@
+
+Package: libunbound
+Version: 1.8.1-2
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libopenssl +libpthread
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: Validating Recursive DNS Server (library)
+Maintainer: Eric Luehrsen <ericluehrsen@gmail.com>
+Source: unbound-1.8.1.tar.gz
+License: BSD-3-Clause
+LicenseFiles: LICENSE
+Type: ipkg
+Description:   This package contains the Unbound shared library.
+http://www.unbound.net/
+Eric Luehrsen <ericluehrsen@gmail.com>
+@@
+
+
+Source-Makefile: feeds/gli_pub/uqmi/Makefile
+
+Package: uqmi
+Submenu: WWAN
+Version: 2016-12-19-8ceeab690d8c6f1e3afbd4bcaee7bc2ba3fbe165-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libubox +libblobmsg-json +kmod-usb-net +kmod-usb-net-qmi-wwan +wwan
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Control utility for mobile broadband modems
+Maintainer: Matti Laakso <malaakso@elisanet.fi>
+Source: uqmi-2016-12-19-8ceeab690d8c6f1e3afbd4bcaee7bc2ba3fbe165.tar.xz
+License: GPL-2.0
+Type: ipkg
+Description:   uqmi is a command line tool for controlling mobile broadband modems using
+  the QMI-protocol.
+Matti Laakso <malaakso@elisanet.fi>
+@@
+
+
+Source-Makefile: feeds/gli_pub/ustream-ssl/Makefile
+
+Package: libustream-mbedtls
+Version: 2019-08-17-e8f9c22d02fccde1d992f324280fb9966d3b4be6-2
+ABIVersion: 20150806
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libubox +libmbedtls
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Build-Variant: mbedtls
+Default-Variant: mbedtls
+Section: libs
+Category: Libraries
+Repository: base
+Title: ustream SSL Library (mbedtls)
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Source: ustream-ssl-2019-08-17-e8f9c22d02fccde1d992f324280fb9966d3b4be6.tar.xz
+License: ISC
+Type: ipkg
+Description: ustream SSL Library (mbedtls)
+Felix Fietkau <nbd@nbd.name>
+@@
+
+Package: libustream-wolfssl
+Version: 2019-08-17-e8f9c22d02fccde1d992f324280fb9966d3b4be6-2
+ABIVersion: 20150806
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libubox +PACKAGE_libustream-wolfssl:libwolfssl
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Build-Variant: wolfssl
+Section: libs
+Category: Libraries
+Repository: base
+Title: ustream SSL Library (wolfssl)
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Source: ustream-ssl-2019-08-17-e8f9c22d02fccde1d992f324280fb9966d3b4be6.tar.xz
+License: ISC
+Type: ipkg
+Description: ustream SSL Library (wolfssl)
+Felix Fietkau <nbd@nbd.name>
+@@
+
+Package: libustream-openssl
+Version: 2019-08-17-e8f9c22d02fccde1d992f324280fb9966d3b4be6-2
+ABIVersion: 20150806
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libubox +PACKAGE_libustream-openssl:libopenssl
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Build-Variant: openssl
+Section: libs
+Category: Libraries
+Repository: base
+Title: ustream SSL Library (openssl)
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Source: ustream-ssl-2019-08-17-e8f9c22d02fccde1d992f324280fb9966d3b4be6.tar.xz
+License: ISC
+Type: ipkg
+Description: ustream SSL Library (openssl)
+Felix Fietkau <nbd@nbd.name>
+@@
+
+
+Source-Makefile: feeds/gli_pub/wpantund/Makefile
+Build-Types: host
+
+Package: wpantund
+Version: 2019-11-13-9e1c0daf7d139ef2668ca28faff8789d2e68364d
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libreadline +dbus +libstdcpp +libncurses +boost-system +kmod-tun
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: wpantund
+Maintainer: 
+Source: wpantund-2019-11-13.tar.bz2
+Type: ipkg
+Description: 	wpantund on openwrt
+
+@@
+
+

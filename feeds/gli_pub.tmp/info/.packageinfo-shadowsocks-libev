@@ -1,0 +1,75 @@
+Source-Makefile: feeds/gli_pub/shadowsocks-libev/Makefile
+Build-Depends: libev libpcre libcares libsodium libmbedtls
+
+Package: shadowsocks-libev
+Version: 3.2.0-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +zlib +libpthread +!SHADOWSOCKS_WITH_EV:libev +!SHADOWSOCKS_WITH_PCRE:libpcre +!SHADOWSOCKS_WITH_CARES:libcares +!SHADOWSOCKS_WITH_SODIUM:libsodium +!SHADOWSOCKS_WITH_MBEDTLS:libmbedtls
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Lightweight Secured Socks5 Proxy
+Maintainer: Jian Chang <aa65535@live.com>
+Source: shadowsocks-libev-3.2.0-8c98bdecac22b5de7637f82c5db458fd57798a68.tar.xz
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: Shadowsocks-libev is a lightweight secured socks5 proxy for embedded devices and low end boxes.
+https://github.com/shadowsocks/shadowsocks-libev
+Jian Chang <aa65535@live.com>
+@@
+
+Package: shadowsocks-libev-server
+Version: 3.2.0-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +zlib +libpthread +!SHADOWSOCKS_WITH_EV:libev +!SHADOWSOCKS_WITH_PCRE:libpcre +!SHADOWSOCKS_WITH_CARES:libcares +!SHADOWSOCKS_WITH_SODIUM:libsodium +!SHADOWSOCKS_WITH_MBEDTLS:libmbedtls
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Lightweight Secured Socks5 Proxy
+Maintainer: Jian Chang <aa65535@live.com>
+Source: shadowsocks-libev-3.2.0-8c98bdecac22b5de7637f82c5db458fd57798a68.tar.xz
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: Shadowsocks-libev is a lightweight secured socks5 proxy for embedded devices and low end boxes.
+https://github.com/shadowsocks/shadowsocks-libev
+Jian Chang <aa65535@live.com>
+@@
+Config:
+menu "Shadowsocks-libev Compile Configuration"
+	depends on PACKAGE_shadowsocks-libev || PACKAGE_shadowsocks-libev-server
+	config SHADOWSOCKS_STATIC_LINK
+		bool "enable static link libraries."
+		default n
+
+		menu "Select libraries"
+			depends on SHADOWSOCKS_STATIC_LINK
+			config SHADOWSOCKS_WITH_EV
+				bool "static link libev."
+				default y
+
+			config SHADOWSOCKS_WITH_PCRE
+				bool "static link libpcre."
+				default y
+
+			config SHADOWSOCKS_WITH_CARES
+				bool "static link libcares."
+				default y
+
+			config SHADOWSOCKS_WITH_SODIUM
+				bool "static link libsodium."
+				default y
+
+			config SHADOWSOCKS_WITH_MBEDTLS
+				bool "static link libmbedtls."
+				default y
+		endmenu
+endmenu
+@@
+
+

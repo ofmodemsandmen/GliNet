@@ -1,0 +1,2 @@
+config ping 'ping'
+	option enable '0'

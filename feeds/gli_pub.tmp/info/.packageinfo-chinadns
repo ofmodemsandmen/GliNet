@@ -1,0 +1,23 @@
+Source-Makefile: feeds/gli_pub/chinadns/Makefile
+
+Package: ChinaDNS
+Version: 1.3.2-8
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread 
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Repository: base
+Title: Protect yourself against DNS poisoning in China.
+Maintainer: Jian Chang <aa65535@live.com>
+Source: ChinaDNS-1.3.2-5ed537bd24b7fd53540799f9ab4cf56f749c3245.tar.xz
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: Protect yourself against DNS poisoning in China.
+https://github.com/shadowsocks/ChinaDNS
+Jian Chang <aa65535@live.com>
+@@
+
+

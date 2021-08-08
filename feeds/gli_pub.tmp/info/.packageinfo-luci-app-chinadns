@@ -1,0 +1,83 @@
+Source-Makefile: feeds/gli_pub/luci-app-chinadns/Makefile
+
+Package: luci-app-chinadns
+Submenu: 3. Applications
+Version: 1.6.2-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +ChinaDNS
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: luci
+Category: LuCI
+Repository: base
+Title: ChinaDNS LuCI interface
+Maintainer: Jian Chang <aa65535@live.com>
+Source: 
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: 	LuCI Support for ChinaDNS.
+Jian Chang <aa65535@live.com>
+@@
+
+Package: luci-app-dns-forwarder
+Submenu: 3. Applications
+Version: 1.6.2-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +dns-forwarder
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: luci
+Category: LuCI
+Repository: base
+Title: Dns-Forwarder LuCI interface
+Maintainer: Jian Chang <aa65535@live.com>
+Source: 
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: 	LuCI Support for Dns-Forwarder.
+Jian Chang <aa65535@live.com>
+@@
+
+Package: luci-app-redsocks2
+Submenu: 3. Applications
+Version: 1.6.2-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +redsocks2
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: luci
+Category: LuCI
+Repository: base
+Title: RedSocks2 LuCI interface
+Maintainer: Jian Chang <aa65535@live.com>
+Source: 
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: 	LuCI Support for RedSocks2.
+Jian Chang <aa65535@live.com>
+@@
+
+Package: luci-app-shadowvpn
+Submenu: 3. Applications
+Version: 1.6.2-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +ShadowVPN
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: luci
+Category: LuCI
+Repository: base
+Title: ShadowVPN LuCI interface
+Maintainer: Jian Chang <aa65535@live.com>
+Source: 
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: 	LuCI Support for ShadowVPN.
+Jian Chang <aa65535@live.com>
+@@
+
+

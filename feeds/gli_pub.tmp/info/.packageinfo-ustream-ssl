@@ -1,0 +1,64 @@
+Source-Makefile: feeds/gli_pub/ustream-ssl/Makefile
+
+Package: libustream-mbedtls
+Version: 2019-08-17-e8f9c22d02fccde1d992f324280fb9966d3b4be6-2
+ABIVersion: 20150806
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libubox +libmbedtls
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Build-Variant: mbedtls
+Default-Variant: mbedtls
+Section: libs
+Category: Libraries
+Repository: base
+Title: ustream SSL Library (mbedtls)
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Source: ustream-ssl-2019-08-17-e8f9c22d02fccde1d992f324280fb9966d3b4be6.tar.xz
+License: ISC
+Type: ipkg
+Description: ustream SSL Library (mbedtls)
+Felix Fietkau <nbd@nbd.name>
+@@
+
+Package: libustream-wolfssl
+Version: 2019-08-17-e8f9c22d02fccde1d992f324280fb9966d3b4be6-2
+ABIVersion: 20150806
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libubox +PACKAGE_libustream-wolfssl:libwolfssl
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Build-Variant: wolfssl
+Section: libs
+Category: Libraries
+Repository: base
+Title: ustream SSL Library (wolfssl)
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Source: ustream-ssl-2019-08-17-e8f9c22d02fccde1d992f324280fb9966d3b4be6.tar.xz
+License: ISC
+Type: ipkg
+Description: ustream SSL Library (wolfssl)
+Felix Fietkau <nbd@nbd.name>
+@@
+
+Package: libustream-openssl
+Version: 2019-08-17-e8f9c22d02fccde1d992f324280fb9966d3b4be6-2
+ABIVersion: 20150806
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +libubox +PACKAGE_libustream-openssl:libopenssl
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Build-Variant: openssl
+Section: libs
+Category: Libraries
+Repository: base
+Title: ustream SSL Library (openssl)
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Source: ustream-ssl-2019-08-17-e8f9c22d02fccde1d992f324280fb9966d3b4be6.tar.xz
+License: ISC
+Type: ipkg
+Description: ustream SSL Library (openssl)
+Felix Fietkau <nbd@nbd.name>
+@@
+
+

@@ -1,0 +1,43 @@
+Source-Makefile: feeds/gli_pub/luci-app-shadowsocks/Makefile
+
+Package: luci-app-shadowsocks
+Submenu: 3. Applications
+Version: 1.8.2-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +iptables +ipset
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: luci
+Category: LuCI
+Repository: base
+Title: LuCI Support for shadowsocks-libev
+Maintainer: Jian Chang <aa65535@live.com>
+Source: 
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: 	LuCI Support for shadowsocks-libev.
+Jian Chang <aa65535@live.com>
+@@
+
+Package: luci-app-shadowsocks-without-ipset
+Submenu: 3. Applications
+Version: 1.8.2-1
+Depends: +libc +GCC_LIBSSP:libssp +USE_GLIBC:librt +USE_GLIBC:libpthread +iptables
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: luci
+Category: LuCI
+Repository: base
+Title: LuCI Support for shadowsocks-libev
+Maintainer: Jian Chang <aa65535@live.com>
+Source: 
+License: GPLv3
+LicenseFiles: LICENSE
+Type: ipkg
+Description: 	LuCI Support for shadowsocks-libev.
+Jian Chang <aa65535@live.com>
+@@
+
+
