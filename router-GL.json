@@ -1,19 +1,21 @@
 {
 	"AR300M": {
-		"details": "GL AR300M",
+		"details": "GL.iNet AR300M",
 		"type": "2",
+		"build": "GL",
 		"config": ".config_ar300m",
 		"image1": "openwrt-ath79-nand-glinet_gl-ar300m-nand-squashfs-sysupgrade.tar",
 		"image2": "openwrt-ath79-nand-glinet_gl-ar300m-nand-squashfs-factory.img",
 		"imagepath": "/ath79/nand/",
-		"mod": "GL-AR300M",
+		"mod": "GL-AR300M-nand",
 		"ext1": "-upgrade.tar",
 		"ext2": "-factory.img",
 		"addons": ["readme.pdf", "glinet.txt"]
 	},
 	"XE300": {
-		"details": "GL XE300",
+		"details": "GL.iNet XE300",
 		"type": "2",
+		"build": "GL",
 		"config": ".config_xe300",
 		"image1": "openwrt-ath79-nand-glinet_gl-xe300-nor-nand-squashfs-factory.img",
 		"image2": "openwrt-ath79-nand-glinet_gl-xe300-nor-nand-squashfs-sysupgrade.tar",
