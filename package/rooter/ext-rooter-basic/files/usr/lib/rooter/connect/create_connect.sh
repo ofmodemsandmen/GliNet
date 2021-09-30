@@ -691,7 +691,7 @@ if $QUECTEL; then
 	log "Quectel Unsolicited Responses Disabled"
 	if [ -e /etc/interwave ]; then
 		ATCMDD="AT+CGMM"
-		MODEL=$($ROOTER/gcom/gcom-locked "/dev/ttyUSB$CPORT" "run-at.gcom" "$CURRMODEM" "$ATCMDD")
+		model=$($ROOTER/gcom/gcom-locked "/dev/ttyUSB$CPORT" "run-at.gcom" "$CURRMODEM" "$ATCMDD")
 		EM160=$(echo $model | grep "EM160")
 		if [ $idV != "0800" ]; then
 			if [ $EM160 ]; then
