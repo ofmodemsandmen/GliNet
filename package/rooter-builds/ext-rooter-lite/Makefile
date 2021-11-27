@@ -16,7 +16,7 @@ define Package/ext-rooter-lite
   DEPENDS:=+luci +ext-rooter-basic \
 		+luci-app-rootervpn +ext-wireguard \
 		+luci-app-ddns +ddns-scripts +ddns-scripts_no-ip_com \
-		+bwmon +kmod-usb-serial \
+		+bwmon +kmod-usb-serial +kmod-usb-net \
 		+ext-theme +luci-theme-argon +argon-config +ext-login \
 		+luci-theme-tomato +ext-material \
 		+ca-bundle +ca-certificates +libustream-openssl \
