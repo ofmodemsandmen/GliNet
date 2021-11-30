@@ -38,13 +38,26 @@
 	},
 	"MV1000": {
 		"details": "Gl.iNet MV1000",
-		"type": "4",
+		"type": "1",
 		"build": "GL",
 		"config": ".config_mv1000",
-		"image1": "openwrt-mvebu-cortexa53-glinet_gl-mv1000-squashfs-sdcard.img.gz",
-		"image2": "openwrt-mvebu-cortexa53-glinet_gl-mv1000-squashfs-sdcard.img",
+		"image": "openwrt-mvebu-cortexa53-gl-mv1000-squashfs-sysupgrade.bin",
 		"imagepath": "/mvebu/cortexa53/",
 		"mod": "Gl.iNet-MV1000",
+		"ext": "-upgrade.bin",
 		"addons": ["readme.pdf"]
+	},
+	"X1200": {
+		"details": "GL.iNet X1200",
+		"type": "2",
+		"build": "GL",
+		"config": ".config_x1200",
+		"image1": "openwrt-ath79-nand-glinet_gl-x1200-nor-nand-squashfs-factory.img",
+		"image2": "openwrt-ath79-nand-glinet_gl-x1200-nor-nand-squashfs-sysupgrade.tar",
+		"imagepath": "/ath79/nand/",
+		"mod": "GL-X1200",
+		"ext2": "-upgrade.tar",
+		"ext1": "-factory.img",
+		"addons": ["readme.pdf", "glinet.txt"]
 	}
 }
