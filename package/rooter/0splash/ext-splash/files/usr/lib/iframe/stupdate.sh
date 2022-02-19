@@ -191,10 +191,10 @@ if [ $splash = "1" ]; then
 	SPSTATUS="/tmp/www/splash.html"
 	rm -f $STEMP
 	cp $STATUS $STEMP
-	button="<div class='rooterPageContentBut'><div class="" id=\"rooterItems\"><a href='cgi-bin/luci'><div class=\"rooterItem\" id=\"rooterItem1\"><div class=\"rooterItemTitle\"><i class='icon icon-cog'></i> Click for Router Login</div><div class=\"rooterItemTitle\">to the Web GUI.</div></div></a></div></div>"
+	button="<div class='rooterPageContentBW'><div class="" id=\"rooterItems\"><a href='cgi-bin/luci'><div class=\"rooterItem\" id=\"rooterItem1\"><div class=\"rooterItemTitle\"><i class='icon icon-cog'></i> Click for Router Login</div><div class=\"rooterItemTitle\">to the Web GUI.</div></div></a></div></div>"
 	sed -i -e "s!#BUTTON#!$button!g" $STEMP
 	sed -i -e "s!#LUCIS#!luci-static/!g" $STEMP
-	titlebar="<div class='rooterPageHead'><a  href='http://www.4gaccess.com'><div class=\"rooterHeadTitle\"> #TITLE#</div></a></div>"
+	titlebar="<div class='rooterPageHead'><a  href='http://www.ofmodemsandmen.com.com'><div class=\"rooterHeadTitle\"> #TITLE#</div></a></div>"
 	sed -i -e "s!#TITLEBAR#!$titlebar!g" $STEMP
 	title=$(uci -q get iframe.iframe.splashtitle)
 	sed -i -e "s!#TITLE#!$title!g" $STEMP
@@ -210,7 +210,7 @@ if [ $splash = "1" ]; then
 	sed -i -e "s!#RSCP#!$namev!g" $STEMP
 	level2txt "$ecio" "single" 1
 	sed -i -e "s!#RSRQ#!$namev!g" $STEMP
-	level2txt "$sinr" "single" 
+	level2txt "$sinr" "single" 1
 	sed -i -e "s!#SINR#!$namev!g" $STEMP
 
 	level2txt "$mode" "single"
