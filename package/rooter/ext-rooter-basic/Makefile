@@ -16,12 +16,13 @@ define Package/ext-rooter-basic
   SECTION:=utils
   CATEGORY:=ROOter
   SUBMENU:=Basic Support
-  DEPENDS:=+luci-compat +kmod-usb-net +kmod-usb-net-huawei-cdc-ncm +kmod-usb-net-cdc-ether +kmod-usb-acm \
+  DEPENDS:=+luci-compat +kmod-usb-net-huawei-cdc-ncm +kmod-usb-net-cdc-ether +kmod-usb-acm \
 	    +kmod-usb-net-qmi-wwan  +kmod-usb-net-rndis +kmod-usb-serial-qualcomm \
-	    +kmod-usb-net-sierrawireless +kmod-usb-ohci +kmod-usb-serial +kmod-nls-utf8 \
+	    +kmod-usb-net-sierrawireless +kmod-usb-ohci +kmod-nls-utf8 \
 	    +kmod-usb-serial-option +kmod-usb-serial-sierrawireless +luci-proto-3x \
 	    +kmod-usb-uhci +kmod-usb2 +luci-proto-3g +luci-theme-bootstrap \
-	    +usb-modeswitch +wireless-tools +rmbim +rqmi +ext-sms +ext-buttons +kmod-rt2800-usb
+	    +usb-modeswitch +wireless-tools +rmbim +rqmi +ext-sms +ext-buttons +kmod-rt2800-usb \
+	    +libustream-wolfssl
   TITLE:=ROOter support for usbmodems
   PKGARCH:=all
 endef
