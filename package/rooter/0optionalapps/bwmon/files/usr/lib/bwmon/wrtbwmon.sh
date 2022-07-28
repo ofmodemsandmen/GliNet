@@ -1,6 +1,6 @@
 #!/bin/sh
 
-setbackup() {
+setbackup() { 
 	extn=$(uci -q get bwmon.general.external)
 	if [ "$extn" = "0" ]; then
 		backPath=/usr/lib/bwmon/data/
@@ -447,6 +447,10 @@ checkTime()
 		cDay=$pDay
 		cMonth=$pMonth
 		cYear=$pYear
+		monthlyUsageBack="$backPath$cYear-$cMonth-mac_data.js"
+		if [ ! -e $monthlyUsageBack ]; then
+			rm -f $backPath*"mac_data.js"
+		fi
 		rm -f $dataPath[[:digit:]][[:digit:]][[:digit:]][[:digit:]]"-"[[:digit:]][[:digit:]]"-"[[:digit:]][[:digit:]]-daily_data.js
 		rm -f $backPath[[:digit:]][[:digit:]][[:digit:]][[:digit:]]"-"[[:digit:]][[:digit:]]"-"[[:digit:]][[:digit:]]-daily_data.js
 		roll=$(uci -q get custom.bwallocate.rollover)
