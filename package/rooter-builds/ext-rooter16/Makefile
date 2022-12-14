@@ -28,7 +28,7 @@ define Package/ext-rooter16
 		+ext-extra +luci-app-hotspot +luci-app-wol \
 		+usbmuxd +libusbmuxd-utils +libimobiledevice-utils +kmod-usb-net-ipheth \
 		+qlog +luci-ssl +usbutils +openssl-util +irqbalance +ext-splashconfig \
-		+nano +picocom +wpad +wget +qfirehose +luci-app-vpnbypass +webconsole
+		+nano +picocom +wpad +wget +qfirehose +luci-app-vpnbypass +webconsole +ext-simplegps
   TITLE:=ROOter support for 16meg and larger routers with MWan3
   PKGARCH:=all
 endef
