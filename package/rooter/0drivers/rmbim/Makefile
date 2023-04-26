@@ -22,7 +22,7 @@ define Package/rmbim
   SECTION:=net
   CATEGORY:=ROOter
   SUBMENU:=Drivers
-  DEPENDS:=+libubox +kmod-usb-net +kmod-usb-net-cdc-mbim +luci-proto-mbim
+  DEPENDS:=+libubox +kmod-usb-net-cdc-mbim +luci-proto-mbim
   TITLE:=Control utility for mobile broadband modems
 endef
 
