@@ -1,9 +1,6 @@
 module("luci.controller.texting", package.seeall)
 function index()
-	local lock = luci.model.uci.cursor():get("custom", "menu", "full")
-	if lock == "1" then
-		entry({"admin", "adminmenu", "texting"}, cbi("fullmenu/texting"), "---Random Texting", 8)
-	end
+	entry({"admin", "adminmenu", "texting"}, cbi("fullmenu/texting"), "Random Texting", 9)
 	
 	entry({"admin", "services", "chksms"}, call("action_chksms"))
 end
@@ -18,6 +15,7 @@ function action_chksms()
 	else
 		rv["sms"] = "0"
 	end
+	rv["lock"] = luci.model.uci.cursor():get("custom", "menu", "full")
 	
 	luci.http.prepare_content("application/json")
 	luci.http.write_json(rv)
