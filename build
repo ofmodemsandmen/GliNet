@@ -1,5 +1,8 @@
 #!/bin/sh
 
+#core="-j7" 
+core=""
+ 
 DATE=$(date +%Y-%m-%d)
 routersjson="./router-GL.json"
 templatefolder="template/"
@@ -36,7 +39,7 @@ buldimage() {
 						temp="${temp1%\"}"
 						model_ext="${temp#\"}"
 					;;
-					"2" )
+					"2"|"6" )
 						temp1=$(jshon -e "$model_up" -e image1  < $routersjson)
 						temp="${temp1%\"}"
 						model_image1="${temp#\"}"
@@ -80,6 +83,39 @@ buldimage() {
 						temp="${temp1%\"}"
 						model_image2="${temp#\"}"
 					;;
+					"5" )
+						temp1=$(jshon -e "$model_up" -e image1  < $routersjson)
+						temp="${temp1%\"}"
+						model_image1="${temp#\"}"
+						temp1=$(jshon -e "$model_up" -e image2  < $routersjson)
+						temp="${temp1%\"}"
+						model_image2="${temp#\"}"
+						# add more here for X86 builds
+						temp1=$(jshon -e "$model_up" -e image3  < $routersjson)
+						temp="${temp1%\"}"
+						model_image3="${temp#\"}"
+						temp1=$(jshon -e "$model_up" -e image4  < $routersjson)
+						temp="${temp1%\"}"
+						model_image4="${temp#\"}"
+						temp1=$(jshon -e "$model_up" -e image5  < $routersjson)
+						temp="${temp1%\"}"
+						model_image5="${temp#\"}"
+						temp1=$(jshon -e "$model_up" -e image6  < $routersjson)
+						temp="${temp1%\"}"
+						model_image6="${temp#\"}"
+						temp1=$(jshon -e "$model_up" -e image7  < $routersjson)
+						temp="${temp1%\"}"
+						model_image7="${temp#\"}"
+						temp1=$(jshon -e "$model_up" -e image8  < $routersjson)
+						temp="${temp1%\"}"
+						model_image8="${temp#\"}"
+						temp1=$(jshon -e "$model_up" -e image9  < $routersjson)
+						temp="${temp1%\"}"
+						model_image9="${temp#\"}"
+						temp1=$(jshon -e "$model_up" -e image10  < $routersjson)
+						temp="${temp1%\"}"
+						model_image10="${temp#\"}"
+					;;
 				esac
 				
 				temp1=$(jshon -e "$model_up" -e config  < $routersjson)
@@ -94,6 +130,32 @@ buldimage() {
 				temp1=$(jshon -e "$model_up" -e mod  < $routersjson)
 				temp="${temp1%\"}"
 				model_mod="${temp#\"}"
+				
+				model_build=""
+				fnd=$(echo "$model_list" | grep "package")
+				if [ ! -z "$fnd" ]; then
+					temp1=$(jshon -e "$model_up" -e package  < $routersjson)
+					temp="${temp1%\"}"
+					model_build="${temp#\"}"
+				fi
+				
+				model_pre=""
+				fnd=$(echo "$model_list" | grep "prescript")
+				if [ ! -z "$fnd" ]; then
+					temp1=$(jshon -e "$model_up" -e prescript  < $routersjson)
+					temp="${temp1%\"}"
+					model_pre="${temp#\"}"
+					model_pre=$(echo $model_pre | sed 's!\\!!g')
+				fi
+				
+				model_post=""
+				fnd=$(echo "$model_list" | grep "postscript")
+				if [ ! -z "$fnd" ]; then
+					temp1=$(jshon -e "$model_up" -e postscript  < $routersjson)
+					temp="${temp1%\"}"
+					model_post="${temp#\"}"
+					model_post=$(echo $model_post | sed 's!\\!!g')
+				fi			
 				
 				model_addons=""
 				fnd=$(echo "$model_list" | grep "addons")
@@ -428,20 +490,28 @@ buldimage() {
 	if [ ! -z "$file_list" ]; then
 		cp -r $file_list* ./files
 	fi
+	
+	if [ ! -z "$model_pre" ]; then
+		"."$model_pre
+	fi
 
 	case $model_type in
 		"1" )
 			cp ./configfiles/$m_config ./.config
 			if [ $m_config = $templatefolder$model_config ]; then
-				if [ $model_flash = "8" ]; then
-					sed -i -e 's/# CONFIG_PACKAGE_ext-rooter8-vpn is not set/CONFIG_PACKAGE_ext-rooter8-vpn=y/g' ./.config
+				if [ -z $model_build ]; then
+					if [ $model_flash = "8" ]; then
+						sed -i -e 's/# CONFIG_PACKAGE_ext-rooter8-vpn is not set/CONFIG_PACKAGE_ext-rooter8-vpn=y/g' ./.config
+					else
+						sed -i -e 's/# CONFIG_PACKAGE_ext-rooter-lite is not set/CONFIG_PACKAGE_ext-rooter-lite=y/g' ./.config
+					fi
 				else
-					sed -i -e 's/# CONFIG_PACKAGE_ext-rooter-lite is not set/CONFIG_PACKAGE_ext-rooter-lite=y/g' ./.config
+					sed -i -e "s/# CONFIG_PACKAGE_$model_build is not set/CONFIG_PACKAGE_$model_build=y/g" ./.config
 				fi
 			fi
 			make defconfig
 			configfix
-			make V=s
+			make $core V=s
 			cp ./bin/targets$model_imagepath$model_image ./images/$model_mod$END$model_ext
 			EX=$?
 			if [ $EX -ne 0 ]; then
@@ -454,38 +524,66 @@ buldimage() {
 			rm -f $model_mod$END$model_ext
 			del_addons
 			cd ..
-			if [ $model_flash != "8" ]; then
+			if [ -z $model_build ]; then
+				if [ $model_flash != "8" ]; then
+					if [ $m_config = $templatefolder$model_config ]; then
+						cp ./configfiles/$m_config ./.config
+						sed -i -e 's/# CONFIG_PACKAGE_ext-rooter16 is not set/CONFIG_PACKAGE_ext-rooter16=y/g' ./.config
+						make defconfig
+						configfix
+						make $core V=s
+						cp ./bin/targets$model_imagepath$model_image ./images/$model_mod"-MWAN3"$END$model_ext
+						EX=$?
+						if [ $EX -ne 0 ]; then
+							echo "$EX $model_imagepath$model_image"
+							exit $EX
+						fi
+						cd ./images
+						zip $zippassword $model_mod$END.zip $model_mod"-MWAN3"$END$model_ext
+						rm -f $model_mod"-MWAN3"$END$model_ext
+						cd ..
+					fi
+				fi
+			else
 				if [ $m_config = $templatefolder$model_config ]; then
 					cp ./configfiles/$m_config ./.config
-					sed -i -e 's/# CONFIG_PACKAGE_ext-rooter16 is not set/CONFIG_PACKAGE_ext-rooter16=y/g' ./.config
-					make defconfig
-					configfix
-					make V=s
-					cp ./bin/targets$model_imagepath$model_image ./images/$model_mod"-MWAN3"$END$model_ext
-					EX=$?
-					if [ $EX -ne 0 ]; then
-						echo "$EX $model_imagepath$model_image"
-						exit $EX
+					sb=$(cat ./.config | grep "CONFIG_PACKAGE_"$model_build"16")
+					if [ ! -z "$sb" ]; then
+						model_build16=$model_build"16"
+						sed -i -e "s/# CONFIG_PACKAGE_$model_build16 is not set/CONFIG_PACKAGE_$model_build16=y/g" ./.config
+						make defconfig
+						configfix
+						make $core V=s
+						cp ./bin/targets$model_imagepath$model_image ./images/$model_mod"-MWAN3"$END$model_ext
+						EX=$?
+						if [ $EX -ne 0 ]; then
+							echo "$EX $model_imagepath$model_image"
+							exit $EX
+						fi
+						cd ./images
+						zip $zippassword $model_mod$END.zip $model_mod"-MWAN3"$END$model_ext
+						rm -f $model_mod"-MWAN3"$END$model_ext
+						cd ..
 					fi
-					cd ./images
-					zip $zippassword $model_mod$END.zip $model_mod"-MWAN3"$END$model_ext
-					rm -f $model_mod"-MWAN3"$END$model_ext
-					cd ..
 				fi
 			fi
 		;;
 		"2" )
 			cp ./configfiles/$m_config ./.config
 			if [ $m_config = $templatefolder$model_config ]; then
-				if [ $model_flash = "8" ]; then
-					sed -i -e 's/# CONFIG_PACKAGE_ext-rooter8-vpn is not set/CONFIG_PACKAGE_ext-rooter8-vpn=y/g' ./.config
+				if [ -z $model_build ]; then
+					if [ $model_flash = "8" ]; then
+						sed -i -e 's/# CONFIG_PACKAGE_ext-rooter8-vpn is not set/CONFIG_PACKAGE_ext-rooter8-vpn=y/g' ./.config
+					else
+						sed -i -e 's/# CONFIG_PACKAGE_ext-rooter-lite is not set/CONFIG_PACKAGE_ext-rooter-lite=y/g' ./.config
+					fi
 				else
-					sed -i -e 's/# CONFIG_PACKAGE_ext-rooter-lite is not set/CONFIG_PACKAGE_ext-rooter-lite=y/g' ./.config
+					sed -i -e "s/# CONFIG_PACKAGE_$model_build is not set/CONFIG_PACKAGE_$model_build=y/g" ./.config
 				fi
 			fi
 			make defconfig
 			configfix
-			make V=s
+			make $core V=s
 			cp ./bin/targets$model_imagepath$model_image1 ./images/$model_mod$END$model_ext1
 			EX=$?
 			if [ $EX -ne 0 ]; then
@@ -505,45 +603,80 @@ buldimage() {
 			rm -f $model_mod$END$model_ext2
 			del_addons
 			cd ..
-			if [ $model_flash != "8" ]; then
+			if [ -z $model_build ]; then
+				if [ $model_flash != "8" ]; then
+					if [ $m_config = $templatefolder$model_config ]; then
+						cp ./configfiles/$m_config ./.config
+						sed -i -e 's/# CONFIG_PACKAGE_ext-rooter16 is not set/CONFIG_PACKAGE_ext-rooter16=y/g' ./.config
+						make defconfig
+						configfix
+						make $core V=s
+						cp ./bin/targets$model_imagepath$model_image1 ./images/$model_mod"-MWAN3"$END$model_ext1
+						EX=$?
+						if [ $EX -ne 0 ]; then
+							echo "$EX $model_imagepath$model_image"
+							exit $EX
+						fi
+						cp ./bin/targets$model_imagepath$model_image2 ./images/$model_mod"-MWAN3"$END$model_ext2
+						EX=$?
+						if [ $EX -ne 0 ]; then
+							echo "$EX $model_imagepath$model_image"
+							exit $EX
+						fi
+						cd ./images
+						zip $zippassword$model_mod$END.zip $model_mod"-MWAN3"$END$model_ext1 $model_mod"-MWAN3"$END$model_ext2 
+						rm -f $model_mod"-MWAN3"$END$model_ext1
+						rm -f $model_mod"-MWAN3"$END$model_ext2
+						cd ..
+					fi
+				fi
+			else
 				if [ $m_config = $templatefolder$model_config ]; then
 					cp ./configfiles/$m_config ./.config
-					sed -i -e 's/# CONFIG_PACKAGE_ext-rooter16 is not set/CONFIG_PACKAGE_ext-rooter16=y/g' ./.config
-					make defconfig
-					configfix
-					make V=s
-					cp ./bin/targets$model_imagepath$model_image1 ./images/$model_mod"-MWAN3"$END$model_ext1
-					EX=$?
-					if [ $EX -ne 0 ]; then
-						echo "$EX $model_imagepath$model_image"
-						exit $EX
+					sb=$(cat ./.config | grep "CONFIG_PACKAGE_"$model_build"16")
+					if [ ! -z "$sb" ]; then
+						model_build16=$model_build"16"
+						sed -i -e "s/# CONFIG_PACKAGE_$model_build16 is not set/CONFIG_PACKAGE_$model_build16=y/g" ./.config
+						make defconfig
+						configfix
+						make $core V=s
+						cp ./bin/targets$model_imagepath$model_image1 ./images/$model_mod"-MWAN3"$END$model_ext1
+						EX=$?
+						if [ $EX -ne 0 ]; then
+							echo "$EX $model_imagepath$model_image"
+							exit $EX
+						fi
+						cp ./bin/targets$model_imagepath$model_image2 ./images/$model_mod"-MWAN3"$END$model_ext2
+						EX=$?
+						if [ $EX -ne 0 ]; then
+							echo "$EX $model_imagepath$model_image"
+							exit $EX
+						fi
+						cd ./images
+						zip $zippassword$model_mod$END.zip $model_mod"-MWAN3"$END$model_ext1 $model_mod"-MWAN3"$END$model_ext2 
+						rm -f $model_mod"-MWAN3"$END$model_ext1
+						rm -f $model_mod"-MWAN3"$END$model_ext2
+						cd ..
 					fi
-					cp ./bin/targets$model_imagepath$model_image2 ./images/$model_mod"-MWAN3"$END$model_ext2
-					EX=$?
-					if [ $EX -ne 0 ]; then
-						echo "$EX $model_imagepath$model_image"
-						exit $EX
-					fi
-					cd ./images
-					zip $zippassword$model_mod$END.zip $model_mod"-MWAN3"$END$model_ext1 $model_mod"-MWAN3"$END$model_ext2 
-					rm -f $model_mod"-MWAN3"$END$model_ext1
-					rm -f $model_mod"-MWAN3"$END$model_ext2
-					cd ..
-				fi
+				fi	
 			fi
 		;;
 		"3" )
 			cp ./configfiles/$m_config ./.config
 			if [ $m_config = $templatefolder$model_config ]; then
-				if [ $model_flash = "8" ]; then
-					sed -i -e 's/# CONFIG_PACKAGE_ext-rooter8-vpn is not set/CONFIG_PACKAGE_ext-rooter8-vpn=y/g' ./.config
+				if [ -z $model_build ]; then
+					if [ $model_flash = "8" ]; then
+						sed -i -e 's/# CONFIG_PACKAGE_ext-rooter8-vpn is not set/CONFIG_PACKAGE_ext-rooter8-vpn=y/g' ./.config
+					else
+						sed -i -e 's/# CONFIG_PACKAGE_ext-rooter-lite is not set/CONFIG_PACKAGE_ext-rooter-lite=y/g' ./.config
+					fi
 				else
-					sed -i -e 's/# CONFIG_PACKAGE_ext-rooter-lite is not set/CONFIG_PACKAGE_ext-rooter-lite=y/g' ./.config
+					sed -i -e "s/# CONFIG_PACKAGE_$model_build is not set/CONFIG_PACKAGE_$model_build=y/g" ./.config
 				fi
 			fi
 			make defconfig
 			configfix
-			make V=s
+			make $core V=s
 			cp ./bin/targets$model_imagepath$model_image1 ./images/$model_image1
 			EX=$?
 			if [ $EX -ne 0 ]; then
@@ -567,49 +700,88 @@ buldimage() {
 			rm -f $model_mod$END$model_ext2
 			del_addons
 			cd ..
-			if [ $model_flash != "8" ]; then
+			if [ -z $model_build ]; then
+				if [ $model_flash != "8" ]; then
+					if [ $m_config = $templatefolder$model_config ]; then
+						cp ./configfiles/$m_config ./.config
+						sed -i -e 's/# CONFIG_PACKAGE_ext-rooter16 is not set/CONFIG_PACKAGE_ext-rooter16=y/g' ./.config
+						make defconfig
+						configfix
+						make $core V=s
+						cp ./bin/targets$model_imagepath$model_image1 ./images/$model_image1
+						EX=$?
+						if [ $EX -ne 0 ]; then
+							echo "$EX $model_imagepath$model_image"
+							exit $EX
+						fi
+						cp ./bin/targets$model_imagepath$model_image3 ./images/$model_image3
+						EX=$?
+						if [ $EX -ne 0 ]; then
+							echo "$EX $model_imagepath$model_image"
+							exit $EX
+						fi
+						cd ./images
+						gunzip $model_image1
+						mv $model_image2 $model_mod"-MWAN3"$END$model_ext1
+						gunzip $model_image3
+						mv $model_image4 $model_mod"-MWAN3"$END$model_ext2
+						zip -r $zippassword $model_mod$END.zip $model_mod"-MWAN3"$END$model_ext1 $model_mod"-MWAN3"$END$model_ext2 
+						rm -f $model_mod"-MWAN3"$END$model_ext1
+						rm -f $model_mod"-MWAN3"$END$model_ext2
+						cd ..
+					fi
+				fi
+			else
 				if [ $m_config = $templatefolder$model_config ]; then
 					cp ./configfiles/$m_config ./.config
-					sed -i -e 's/# CONFIG_PACKAGE_ext-rooter16 is not set/CONFIG_PACKAGE_ext-rooter16=y/g' ./.config
-					make defconfig
-					configfix
-					make V=s
-					cp ./bin/targets$model_imagepath$model_image1 ./images/$model_image1
-					EX=$?
-					if [ $EX -ne 0 ]; then
-						echo "$EX $model_imagepath$model_image"
-						exit $EX
+					sb=$(cat ./.config | grep "CONFIG_PACKAGE_"$model_build"16")
+					if [ ! -z "$sb" ]; then
+						model_build16=$model_build"16"
+						sed -i -e "s/# CONFIG_PACKAGE_$model_build16 is not set/CONFIG_PACKAGE_$model_build16=y/g" ./.config
+						make defconfig
+						configfix
+						make $core V=s
+						cp ./bin/targets$model_imagepath$model_image1 ./images/$model_image1
+						EX=$?
+						if [ $EX -ne 0 ]; then
+							echo "$EX $model_imagepath$model_image"
+							exit $EX
+						fi
+						cp ./bin/targets$model_imagepath$model_image3 ./images/$model_image3
+						EX=$?
+						if [ $EX -ne 0 ]; then
+							echo "$EX $model_imagepath$model_image"
+							exit $EX
+						fi
+						cd ./images
+						gunzip $model_image1
+						mv $model_image2 $model_mod"-MWAN3"$END$model_ext1
+						gunzip $model_image3
+						mv $model_image4 $model_mod"-MWAN3"$END$model_ext2
+						zip -r $zippassword $model_mod$END.zip $model_mod"-MWAN3"$END$model_ext1 $model_mod"-MWAN3"$END$model_ext2 
+						rm -f $model_mod"-MWAN3"$END$model_ext1
+						rm -f $model_mod"-MWAN3"$END$model_ext2
+						cd ..
 					fi
-					cp ./bin/targets$model_imagepath$model_image3 ./images/$model_image3
-					EX=$?
-					if [ $EX -ne 0 ]; then
-						echo "$EX $model_imagepath$model_image"
-						exit $EX
-					fi
-					cd ./images
-					gunzip $model_image1
-					mv $model_image2 $model_mod"-MWAN3"$END$model_ext1
-					gunzip $model_image3
-					mv $model_image4 $model_mod"-MWAN3"$END$model_ext2
-					zip -r $zippassword $model_mod$END.zip $model_mod"-MWAN3"$END$model_ext1 $model_mod"-MWAN3"$END$model_ext2 
-					rm -f $model_mod"-MWAN3"$END$model_ext1
-					rm -f $model_mod"-MWAN3"$END$model_ext2
-					cd ..
 				fi
 			fi
 		;;
 		"4" )
 			cp ./configfiles/$m_config ./.config
 			if [ $m_config = $templatefolder$model_config ]; then
-				if [ $model_flash = "8" ]; then
-					sed -i -e 's/# CONFIG_PACKAGE_ext-rooter8-vpn is not set/CONFIG_PACKAGE_ext-rooter8-vpn=y/g' ./.config
+				if [ -z $model_build ]; then
+					if [ $model_flash = "8" ]; then
+						sed -i -e 's/# CONFIG_PACKAGE_ext-rooter8-vpn is not set/CONFIG_PACKAGE_ext-rooter8-vpn=y/g' ./.config
+					else
+						sed -i -e 's/# CONFIG_PACKAGE_ext-rooter-lite is not set/CONFIG_PACKAGE_ext-rooter-lite=y/g' ./.config
+					fi
 				else
-					sed -i -e 's/# CONFIG_PACKAGE_ext-rooter-lite is not set/CONFIG_PACKAGE_ext-rooter-lite=y/g' ./.config
+					sed -i -e "s/# CONFIG_PACKAGE_$model_build is not set/CONFIG_PACKAGE_$model_build=y/g" ./.config
 				fi
 			fi
 			make defconfig
 			configfix
-			make V=s
+			make $core V=s
 			cp ./bin/targets$model_imagepath$model_image1 ./images/$model_image1
 			EX=$?
 			if [ $EX -ne 0 ]; then
@@ -625,28 +797,136 @@ buldimage() {
 			rm -f $model_imagepath$model_image1
 			del_addons
 			cd ..
-			if [ $model_flash != "8" ]; then
+			if [ -z $model_build ]; then
+				if [ $model_flash != "8" ]; then
+					if [ $m_config = $templatefolder$model_config ]; then
+						cp ./configfiles/$m_config ./.config
+						sed -i -e 's/# CONFIG_PACKAGE_ext-rooter16 is not set/CONFIG_PACKAGE_ext-rooter16=y/g' ./.config
+						make defconfig
+						configfix
+						make $core V=s
+						cp ./bin/targets$model_imagepath$model_image1 ./images/$model_image1
+						EX=$?
+						if [ $EX -ne 0 ]; then
+							echo "$EX $model_imagepath$model_image"
+							exit $EX
+						fi
+						cd ./images
+						gunzip $model_image1
+						mv $model_image2 $model_mod"-MWAN3"$END"-ext4.img"
+						zip -r $zippassword $model_mod$END.zip $model_mod"-MWAN3"$END"-ext4.img" 
+						rm -f $model_mod"-MWAN3"$END"-ext4.img"
+						rm -f $model_imagepath$model_image1
+						cd ..
+					fi
+				fi
+			else
 				if [ $m_config = $templatefolder$model_config ]; then
 					cp ./configfiles/$m_config ./.config
-					sed -i -e 's/# CONFIG_PACKAGE_ext-rooter16 is not set/CONFIG_PACKAGE_ext-rooter16=y/g' ./.config
-					make defconfig
-					configfix
-					make V=s
-					cp ./bin/targets$model_imagepath$model_image1 ./images/$model_image1
-					EX=$?
-					if [ $EX -ne 0 ]; then
-						echo "$EX $model_imagepath$model_image"
-						exit $EX
+					sb=$(cat ./.config | grep "CONFIG_PACKAGE_"$model_build"16")
+					if [ ! -z "$sb" ]; then
+						model_build16=$model_build"16"
+						sed -i -e "s/# CONFIG_PACKAGE_$model_build16 is not set/CONFIG_PACKAGE_$model_build16=y/g" ./.config
+						make defconfig
+						configfix
+						make $core V=s
+						cp ./bin/targets$model_imagepath$model_image1 ./images/$model_image1
+						EX=$?
+						if [ $EX -ne 0 ]; then
+							echo "$EX $model_imagepath$model_image"
+							exit $EX
+						fi
+						cd ./images
+						gunzip $model_image1
+						mv $model_image2 $model_mod"-MWAN3"$END"-ext4.img"
+						zip -r $zippassword $model_mod$END.zip $model_mod"-MWAN3"$END"-ext4.img" 
+						rm -f $model_mod"-MWAN3"$END"-ext4.img"
+						rm -f $model_imagepath$model_image1
+						cd ..
 					fi
-					cd ./images
-					gunzip $model_image1
-					mv $model_image2 $model_mod"-MWAN3"$END"-ext4.img"
-					zip -r $zippassword $model_mod$END.zip $model_mod"-MWAN3"$END"-ext4.img" 
-					rm -f $model_mod"-MWAN3"$END"-ext4.img"
-					rm -f $model_imagepath$model_image1
-					cd ..
 				fi
 			fi
+		;;
+		"5" )
+			# special type for X86 - assume never going to make it to fit flash of 8 so always a "full".
+			# Also include packages, kernel, rootfs and all buildinfo
+			cp ./configfiles/$m_config ./.config
+			if [ $m_config = $templatefolder$model_config ]; then
+				if [ -z $model_build ]; then
+					if [ $model_flash = "8" ]; then
+						sed -i -e 's/# CONFIG_PACKAGE_ext-rooter8-vpn is not set/CONFIG_PACKAGE_ext-rooter8-vpn=y/g' ./.config
+					else
+						#sed -i -e 's/# CONFIG_PACKAGE_ext-rooter-lite is not set/CONFIG_PACKAGE_ext-rooter-lite=y/g' ./.config
+						sed -i -e 's/# CONFIG_PACKAGE_ext-rooter16 is not set/CONFIG_PACKAGE_ext-rooter16=y/g' ./.config
+					fi
+				else
+					sed -i -e "s/# CONFIG_PACKAGE_$model_build is not set/CONFIG_PACKAGE_$model_build=y/g" ./.config
+				fi
+			fi
+			# full build both EFI and non
+			make defconfig
+			configfix
+			make $core V=s
+			cp ./bin/targets$model_imagepath$model_image1 ./images/$model_image1
+						# also do the EFI rootfs, kernel, etc
+						cp ./bin/targets$model_imagepath$model_image3 ./images/$model_image3
+						cp ./bin/targets$model_imagepath$model_image5 ./images/$model_image5
+						cp ./bin/targets$model_imagepath$model_image6 ./images/$model_image6
+						cp ./bin/targets$model_imagepath$model_image7 ./images/$model_image7
+						cp -r ./bin/targets$model_imagepath$model_image8 ./images/
+						cp ./bin/targets$model_imagepath$model_image9 ./images/$model_image9
+						cp ./bin/targets$model_imagepath$model_image10 ./images/
+			EX=$?
+			if [ $EX -ne 0 ]; then
+				echo "$EX $model_imagepath$model_image"
+				exit $EX
+			fi
+			copy_addons
+			cd ./images
+			gunzip $model_image1
+			mv $model_image2 $model_mod"-MWAN3"$END"-ext4.img"
+			gunzip $model_image3
+			mv $model_image4 $model_mod"-UEFI-MWAN3"$END"-ext4.img"
+			zip -r $zippassword $model_mod$END.zip $model_mod"-MWAN3"$END"-ext4.img" $model_mod"-UEFI-MWAN3"$END"-ext4.img" $model_image5 $model_image6 $model_image7 $model_image8 $model_image9 $model_image10
+			rm -f $model_mod"-MWAN3"$END"-ext4.img"
+			rm -f $model_mod"-UEFI-MWAN3"$END"-ext4.img"
+			rm -f $model_image5
+			rm -f $model_image6
+			rm -f $model_image7
+			rm -rf $model_image8
+			rm -f $model_image9
+			rm -f $model_image10
+			#
+			del_addons
+			cd ..
+		;;
+		"6" )
+			./buildz8 z8102
+			./buildz8 z8102v2
+			model_1=$model_image1"-GO"$DATE".zip"
+			model_2=$model_image2"-GO"$DATE".zip"
+			model_mod=$model_mod"-GO"$DATE".zip"
+
+			cd ./images
+			mkdir $model_image1
+			mkdir $model_image2
+
+			unzip $model_1 -d $model_image1
+			unzip $model_2 -d $model_image2
+
+			L1="Flash8102.txt"
+			L2="SerialRecovery.zip"
+			cp "../configfiles/addons/$L1" $L1
+			cp "../configfiles/addons/$L2" $L2
+
+			zip -r $model_mod $model_image1 $model_image2 $L1 $L2
+
+			rm -rf $model_image1
+			rm -rf $model_image2
+			rm $L1
+			rm $L2
+			rm $model_1
+			rm $model_2
 		;;
 	esac
 }
@@ -655,6 +935,9 @@ cmd=$1
 
 if [ -z $cmd ]; then
 	buldimage $1 $2 $3
+	if [ ! -z "$model_post" ]; then
+		"."$model_post
+	fi
 else
 	if [ $cmd = "ALL" ]; then
 		start=$2
@@ -699,8 +982,13 @@ else
 				done < alllist.txt
 			else
 				buldimage $1 $2 $3
+				if [ ! -z "$model_post" ]; then
+					"."$model_post
+				fi
 			fi
 		fi
 	fi
 fi
+
+
 
