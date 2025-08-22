@@ -1,17 +1,4 @@
 {
-	"AR300M": {
-		"details": "GL.iNet AR300M",
-		"type": "2",
-		"build": "GL",
-		"config": ".config_ar300m",
-		"image1": "openwrt-ath79-nand-glinet_gl-ar300m-nand-squashfs-sysupgrade.tar",
-		"image2": "openwrt-ath79-nand-glinet_gl-ar300m-nand-squashfs-factory.img",
-		"imagepath": "/ath79/nand/",
-		"mod": "GL-AR300M-nand",
-		"ext1": "-upgrade.tar",
-		"ext2": "-factory.img",
-		"addons": ["readme.pdf", "glinet.txt"]
-	},
 	"MV1000": {
 		"details": "Gl.iNet MV1000",
 		"type": "1",
@@ -22,18 +9,5 @@
 		"mod": "Gl.iNet-MV1000",
 		"ext": "-upgrade.bin",
 		"addons": ["readme.pdf"]
-	},
-	"X1200": {
-		"details": "GL.iNet X1200",
-		"type": "2",
-		"build": "GL",
-		"config": ".config_x1200",
-		"image1": "openwrt-ath79-nand-glinet_gl-x1200-nor-nand-squashfs-factory.img",
-		"image2": "openwrt-ath79-nand-glinet_gl-x1200-nor-nand-squashfs-sysupgrade.tar",
-		"imagepath": "/ath79/nand/",
-		"mod": "GL-X1200",
-		"ext2": "-upgrade.tar",
-		"ext1": "-factory.img",
-		"addons": ["readme.pdf", "glinet.txt"]
 	}
 }
